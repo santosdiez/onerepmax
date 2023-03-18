@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  OneRepMax
+
+  Created by Borja Santos-Díez on 17/3/23.
+  
+*/
+
+"sExerciseListTitle" = "Tus 1RM";
+"sExerciseRowSubtitle" = "Una Rep Máx • libras";
+"sNotAvailable" = "N/D";
+"sEmptyList" = "Todavía no hay registros";
