@@ -24,26 +24,19 @@
 		001F091929C698AD005A47EA /* ExerciseDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F091829C698AD005A47EA /* ExerciseDetailModel.swift */; };
 		001F091E29C77A8A005A47EA /* ExercisesListModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F091D29C77A8A005A47EA /* ExercisesListModelTests.swift */; };
 		001F092029C77EBF005A47EA /* ExercisesListModelFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F091F29C77EBF005A47EA /* ExercisesListModelFake.swift */; };
+		001F092229C77FDC005A47EA /* ExercisesListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F092129C77FDC005A47EA /* ExercisesListViewModelTests.swift */; };
+		001F092429C795C7005A47EA /* ExercisesListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F092329C795C7005A47EA /* ExercisesListTests.swift */; };
+		001F092729C796A0005A47EA /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 001F092629C796A0005A47EA /* SnapshotTesting */; };
 		00CDE54929C35E52007AAC2B /* OneRepMaxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDE54829C35E52007AAC2B /* OneRepMaxApp.swift */; };
 		00CDE54B29C35E52007AAC2B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDE54A29C35E52007AAC2B /* ContentView.swift */; };
 		00CDE54D29C35E55007AAC2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00CDE54C29C35E55007AAC2B /* Assets.xcassets */; };
 		00CDE55029C35E55007AAC2B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00CDE54F29C35E55007AAC2B /* Preview Assets.xcassets */; };
 		00CDE55229C35E55007AAC2B /* CoreDataExerciseStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDE55129C35E55007AAC2B /* CoreDataExerciseStorage.swift */; };
 		00CDE55529C35E55007AAC2B /* OneRepMax.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 00CDE55329C35E55007AAC2B /* OneRepMax.xcdatamodeld */; };
-		00CDE55F29C35E56007AAC2B /* OneRepMaxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDE55E29C35E56007AAC2B /* OneRepMaxTests.swift */; };
-		00CDE56929C35E56007AAC2B /* OneRepMaxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDE56829C35E56007AAC2B /* OneRepMaxUITests.swift */; };
-		00CDE56B29C35E56007AAC2B /* OneRepMaxUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDE56A29C35E56007AAC2B /* OneRepMaxUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		00CDE55B29C35E56007AAC2B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 00CDE53D29C35E52007AAC2B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 00CDE54429C35E52007AAC2B;
-			remoteInfo = OneRepMax;
-		};
-		00CDE56529C35E56007AAC2B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 00CDE53D29C35E52007AAC2B /* Project object */;
 			proxyType = 1;
@@ -85,6 +78,8 @@
 		001F091829C698AD005A47EA /* ExerciseDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailModel.swift; sourceTree = "<group>"; };
 		001F091D29C77A8A005A47EA /* ExercisesListModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesListModelTests.swift; sourceTree = "<group>"; };
 		001F091F29C77EBF005A47EA /* ExercisesListModelFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesListModelFake.swift; sourceTree = "<group>"; };
+		001F092129C77FDC005A47EA /* ExercisesListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesListViewModelTests.swift; sourceTree = "<group>"; };
+		001F092329C795C7005A47EA /* ExercisesListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesListTests.swift; sourceTree = "<group>"; };
 		00CDE54529C35E52007AAC2B /* OneRepMax.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneRepMax.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00CDE54829C35E52007AAC2B /* OneRepMaxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneRepMaxApp.swift; sourceTree = "<group>"; };
 		00CDE54A29C35E52007AAC2B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -93,10 +88,6 @@
 		00CDE55129C35E55007AAC2B /* CoreDataExerciseStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataExerciseStorage.swift; sourceTree = "<group>"; };
 		00CDE55429C35E55007AAC2B /* OneRepMax.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OneRepMax.xcdatamodel; sourceTree = "<group>"; };
 		00CDE55A29C35E56007AAC2B /* OneRepMaxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneRepMaxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		00CDE55E29C35E56007AAC2B /* OneRepMaxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneRepMaxTests.swift; sourceTree = "<group>"; };
-		00CDE56429C35E56007AAC2B /* OneRepMaxUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneRepMaxUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		00CDE56829C35E56007AAC2B /* OneRepMaxUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneRepMaxUITests.swift; sourceTree = "<group>"; };
-		00CDE56A29C35E56007AAC2B /* OneRepMaxUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneRepMaxUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,13 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		00CDE56129C35E56007AAC2B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				001F092729C796A0005A47EA /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +189,8 @@
 			isa = PBXGroup;
 			children = (
 				001F091D29C77A8A005A47EA /* ExercisesListModelTests.swift */,
+				001F092129C77FDC005A47EA /* ExercisesListViewModelTests.swift */,
+				001F092329C795C7005A47EA /* ExercisesListTests.swift */,
 			);
 			path = ExerciseList;
 			sourceTree = "<group>";
@@ -228,7 +215,6 @@
 			children = (
 				00CDE54729C35E52007AAC2B /* OneRepMax */,
 				00CDE55D29C35E56007AAC2B /* OneRepMaxTests */,
-				00CDE56729C35E56007AAC2B /* OneRepMaxUITests */,
 				00CDE54629C35E52007AAC2B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -238,7 +224,6 @@
 			children = (
 				00CDE54529C35E52007AAC2B /* OneRepMax.app */,
 				00CDE55A29C35E56007AAC2B /* OneRepMaxTests.xctest */,
-				00CDE56429C35E56007AAC2B /* OneRepMaxUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -274,18 +259,8 @@
 				001F091C29C77A53005A47EA /* Fakes */,
 				001F091B29C779E6005A47EA /* ExerciseDetail */,
 				001F091A29C779DD005A47EA /* ExerciseList */,
-				00CDE55E29C35E56007AAC2B /* OneRepMaxTests.swift */,
 			);
 			path = OneRepMaxTests;
-			sourceTree = "<group>";
-		};
-		00CDE56729C35E56007AAC2B /* OneRepMaxUITests */ = {
-			isa = PBXGroup;
-			children = (
-				00CDE56829C35E56007AAC2B /* OneRepMaxUITests.swift */,
-				00CDE56A29C35E56007AAC2B /* OneRepMaxUITestsLaunchTests.swift */,
-			);
-			path = OneRepMaxUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,27 +298,12 @@
 				00CDE55C29C35E56007AAC2B /* PBXTargetDependency */,
 			);
 			name = OneRepMaxTests;
+			packageProductDependencies = (
+				001F092629C796A0005A47EA /* SnapshotTesting */,
+			);
 			productName = OneRepMaxTests;
 			productReference = 00CDE55A29C35E56007AAC2B /* OneRepMaxTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		00CDE56329C35E56007AAC2B /* OneRepMaxUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 00CDE57429C35E56007AAC2B /* Build configuration list for PBXNativeTarget "OneRepMaxUITests" */;
-			buildPhases = (
-				00CDE56029C35E56007AAC2B /* Sources */,
-				00CDE56129C35E56007AAC2B /* Frameworks */,
-				00CDE56229C35E56007AAC2B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				00CDE56629C35E56007AAC2B /* PBXTargetDependency */,
-			);
-			name = OneRepMaxUITests;
-			productName = OneRepMaxUITests;
-			productReference = 00CDE56429C35E56007AAC2B /* OneRepMaxUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -362,10 +322,6 @@
 						CreatedOnToolsVersion = 13.2.1;
 						TestTargetID = 00CDE54429C35E52007AAC2B;
 					};
-					00CDE56329C35E56007AAC2B = {
-						CreatedOnToolsVersion = 13.2.1;
-						TestTargetID = 00CDE54429C35E52007AAC2B;
-					};
 				};
 			};
 			buildConfigurationList = 00CDE54029C35E52007AAC2B /* Build configuration list for PBXProject "OneRepMax" */;
@@ -378,13 +334,15 @@
 				es,
 			);
 			mainGroup = 00CDE53C29C35E52007AAC2B;
+			packageReferences = (
+				001F092529C796A0005A47EA /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+			);
 			productRefGroup = 00CDE54629C35E52007AAC2B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				00CDE54429C35E52007AAC2B /* OneRepMax */,
 				00CDE55929C35E56007AAC2B /* OneRepMaxTests */,
-				00CDE56329C35E56007AAC2B /* OneRepMaxUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -401,13 +359,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		00CDE55829C35E56007AAC2B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		00CDE56229C35E56007AAC2B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -446,18 +397,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00CDE55F29C35E56007AAC2B /* OneRepMaxTests.swift in Sources */,
+				001F092429C795C7005A47EA /* ExercisesListTests.swift in Sources */,
 				001F091E29C77A8A005A47EA /* ExercisesListModelTests.swift in Sources */,
+				001F092229C77FDC005A47EA /* ExercisesListViewModelTests.swift in Sources */,
 				001F092029C77EBF005A47EA /* ExercisesListModelFake.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		00CDE56029C35E56007AAC2B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				00CDE56B29C35E56007AAC2B /* OneRepMaxUITestsLaunchTests.swift in Sources */,
-				00CDE56929C35E56007AAC2B /* OneRepMaxUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,11 +411,6 @@
 			isa = PBXTargetDependency;
 			target = 00CDE54429C35E52007AAC2B /* OneRepMax */;
 			targetProxy = 00CDE55B29C35E56007AAC2B /* PBXContainerItemProxy */;
-		};
-		00CDE56629C35E56007AAC2B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 00CDE54429C35E52007AAC2B /* OneRepMax */;
-			targetProxy = 00CDE56529C35E56007AAC2B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -705,40 +643,6 @@
 			};
 			name = Release;
 		};
-		00CDE57529C35E56007AAC2B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = es.santosdiez.OneRepMaxUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = OneRepMax;
-			};
-			name = Debug;
-		};
-		00CDE57629C35E56007AAC2B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = es.santosdiez.OneRepMaxUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = OneRepMax;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -769,16 +673,26 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		00CDE57429C35E56007AAC2B /* Build configuration list for PBXNativeTarget "OneRepMaxUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				00CDE57529C35E56007AAC2B /* Debug */,
-				00CDE57629C35E56007AAC2B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		001F092529C796A0005A47EA /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		001F092629C796A0005A47EA /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 001F092529C796A0005A47EA /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		00CDE55329C35E55007AAC2B /* OneRepMax.xcdatamodeld */ = {

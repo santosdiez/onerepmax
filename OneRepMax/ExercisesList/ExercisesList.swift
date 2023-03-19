@@ -75,6 +75,6 @@ struct ExerciseRow: View {
                 }
             }
         }
-        .padding(.all, 10)
+        .padding()
     }
 }

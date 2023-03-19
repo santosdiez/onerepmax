@@ -26,6 +26,7 @@ final class ExercisesListModelTests: XCTestCase {
             let name = "Back Squat"
             let firstExercise = exercises.first // Sorted alphabetically
             
+            // Then
             XCTAssertEqual(firstExercise?.name, name)
             XCTAssertEqual(firstExercise?.oneRepMax, Decimal(name.count))
             expectation.fulfill()
