@@ -43,6 +43,7 @@ struct FileExerciseImporter: ExerciseImporter {
 
             
             exerciseLogs[name]?.append(ExerciseLog(
+                id: UUID(),
                 date: date,
                 sets: sets,
                 reps: reps,
@@ -60,10 +61,11 @@ struct FileExerciseImporter: ExerciseImporter {
                     calculateRM(for: $0.weight, reps: $0.reps)
                 }).max() else { return nil }
 
-                return OneRepMax(date: date, oneRepMax: oneRepMax)
+                return OneRepMax(id: UUID(), date: date, oneRepMax: oneRepMax)
             }
 
             return Exercise(
+                id: UUID(),
                 name: name,
                 logs: logs,
                 oneRepMaxs: oneRepMaxs,
@@ -76,7 +78,7 @@ struct FileExerciseImporter: ExerciseImporter {
             try exerciseStorage.deleteAll()
             try exerciseStorage.add(exercises: exercises)
         } catch {
-            // TBD: Handle errors
+            // TBD
         }
     }
 }

@@ -9,50 +9,86 @@ import Combine
 import CoreData
 
 class CoreDataExerciseStorage: NSObject, ExerciseStorage {
+    private enum Constants {
+        static let exercisesCacheName = "exercises"
+        static let exerciseDetailCacheName = "exerciseDetail"
+    }
+    
     var exercises = CurrentValueSubject<[Exercise], Never>([])
-    private let exerciseFetchController: NSFetchedResultsController<CDExercise>
-    private let persistenceController: PersistenceController
+    var exerciseDetail = CurrentValueSubject<Exercise?, Never>(nil)
     
-    static var preview = CoreDataExerciseStorage(
-        persistenceController: PersistenceController.preview
-    )
-    
-    static let shared = CoreDataExerciseStorage()
-    
-    private init(persistenceController: PersistenceController = PersistenceController.shared) {
-        self.persistenceController = persistenceController
-        
+    private lazy var exercisesFetchController: NSFetchedResultsController<CDExercise> = {
         let fetchRequest = CDExercise.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \CDExercise.name, ascending: true)]
         
-        exerciseFetchController = NSFetchedResultsController(
+        let controller = NSFetchedResultsController(
             fetchRequest: fetchRequest,
             managedObjectContext: persistenceController.container.viewContext,
             sectionNameKeyPath: nil,
-            cacheName: nil
+            cacheName: Constants.exercisesCacheName
         )
+        
+        controller.delegate = self
+        
+        return controller
+    }()
+
+    private lazy var exerciseDetailFetchController: NSFetchedResultsController<CDExercise> = {
+        let fetchRequest = CDExercise.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \CDExercise.name, ascending: true)]
+        fetchRequest.fetchLimit = 1
+        
+        let controller = NSFetchedResultsController(
+            fetchRequest: fetchRequest,
+            managedObjectContext: persistenceController.container.viewContext,
+            sectionNameKeyPath: nil,
+            cacheName: Constants.exerciseDetailCacheName
+        )
+        
+        controller.delegate = self
+        
+        return controller
+    }()
+    
+    private let persistenceController: PersistenceController
+    
+    static let shared = CoreDataExerciseStorage()
+    
+    static let preview = CoreDataExerciseStorage(
+        persistenceController: PersistenceController.preview
+    )
+    
+    private init(persistenceController: PersistenceController = PersistenceController.shared) {
+        self.persistenceController = persistenceController
         super.init()
-        
-        exerciseFetchController.delegate = self
-        
+                
         do {
-            try exerciseFetchController.performFetch()
-            exercises.value = exerciseFetchController.fetchedExercises ?? []
+            try exercisesFetchController.performFetch()
+            exercises.value = exercisesFetchController.fetchedExercises ?? []
         } catch {
             // TBD: Handle error
         }
     }
     
+    func fetchExercise(by id: UUID) throws {
+        exerciseDetailFetchController.fetchRequest.predicate = NSPredicate(format: "id == %@", id as CVarArg)
+        NSFetchedResultsController<CDExercise>.deleteCache(withName: Constants.exerciseDetailCacheName)
+        try exerciseDetailFetchController.performFetch()
+        exerciseDetail.value = exerciseDetailFetchController.fetchedExercises?.first
+    }
+        
     func add(exercises: [Exercise]) throws {
         let context = persistenceController.container.viewContext
         
         exercises.forEach {
             let coreDataExercise = CDExercise(context: context)
+            coreDataExercise.id = $0.id
             coreDataExercise.name = $0.name
             coreDataExercise.overallOneRepMax = $0.overallOneRepMax as NSDecimalNumber?
             
             $0.oneRepMaxs.forEach {
                 let coreDataOneRM = CDOneRepMax(context: context)
+                coreDataOneRM.id = $0.id
                 coreDataOneRM.date = $0.date
                 coreDataOneRM.oneRepMax = NSDecimalNumber(decimal: $0.oneRepMax)
                 coreDataOneRM.exercise = coreDataExercise
@@ -60,6 +96,7 @@ class CoreDataExerciseStorage: NSObject, ExerciseStorage {
             
             $0.logs.forEach {
                 let coreDataLog = CDExerciseLog(context: context)
+                coreDataLog.id = $0.id
                 coreDataLog.date = $0.date
                 coreDataLog.sets = Int16($0.sets)
                 coreDataLog.reps = Int16($0.reps)
@@ -99,14 +136,21 @@ class CoreDataExerciseStorage: NSObject, ExerciseStorage {
 extension CoreDataExerciseStorage: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         guard let exercisesController = controller as? NSFetchedResultsController<CDExercise> else { return }
-        exercises.value = exercisesController.fetchedExercises ?? []
+        
+        if controller == exercisesFetchController {
+            exercises.value = exercisesController.fetchedExercises ?? []
+        }
+        
+        if controller == exerciseDetailFetchController {
+            exerciseDetail.value = exercisesController.fetchedExercises?.first
+        }
     }
 }
 
 // MARK: - NSFetchedResultsController: Utility extension to return already converted results
 extension NSFetchedResultsController where ResultType == CDExercise {
     var fetchedExercises: [Exercise]? {
-        return fetchedObjects?.map { Exercise.fromCoreData(instance: $0) }
+        return fetchedObjects?.compactMap { Exercise.fromCoreData(instance: $0) }
     }
 }
 
@@ -123,13 +167,16 @@ private extension CDExercise {
 
 // MARK: - Utility extensions to create plain models from CoreData instances
 private extension Exercise {
-    static func fromCoreData(instance: CDExercise) -> Exercise {
+    static func fromCoreData(instance: CDExercise) -> Exercise? {
+        guard let id = instance.id,
+              let name = instance.name else { return nil }
+        
         let logs = instance.typedLogs?.compactMap { ExerciseLog.fromCoreData(instance: $0) } ?? []
         let oneRepMaxs = instance.typedOneRepMaxs?.compactMap { OneRepMax.fromCoreData(instance: $0) } ?? []
         
         return Exercise(
-            id: instance.id,
-            name: instance.name ?? "-",
+            id: id,
+            name: name,
             logs: logs,
             oneRepMaxs: oneRepMaxs,
             overallOneRepMax: instance.overallOneRepMax?.decimalValue
@@ -139,11 +186,12 @@ private extension Exercise {
 
 private extension ExerciseLog {
     static func fromCoreData(instance: CDExerciseLog) -> ExerciseLog? {
-        guard let date = instance.date,
+        guard let id = instance.id,
+              let date = instance.date,
               let weight = instance.weight?.decimalValue else { return nil }
               
         return ExerciseLog(
-            id: instance.id,
+            id: id,
             date: date,
             sets: Int(instance.sets),
             reps: Int(instance.reps),
@@ -154,9 +202,10 @@ private extension ExerciseLog {
 
 private extension OneRepMax {
     static func fromCoreData(instance: CDOneRepMax) -> OneRepMax? {
-        guard let date = instance.date,
+        guard let id = instance.id,
+              let date = instance.date,
               let oneRepMax = instance.oneRepMax?.decimalValue else { return nil }
         
-        return OneRepMax(id: instance.id, date: date, oneRepMax: oneRepMax)
+        return OneRepMax(id: id, date: date, oneRepMax: oneRepMax)
     }
 }

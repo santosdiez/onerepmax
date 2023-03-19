@@ -9,7 +9,7 @@ import Foundation
 
 struct ExerciseLog {
     /// Unique identifier for a given instance
-    let id: ObjectIdentifier?
+    let id: UUID
     
     /// Date when the exercise was performed
     let date: Date
@@ -24,7 +24,7 @@ struct ExerciseLog {
     let weight: Decimal
     
     init(
-        id: ObjectIdentifier? = nil,
+        id: UUID,
         date: Date,
         sets: Int,
         reps: Int,

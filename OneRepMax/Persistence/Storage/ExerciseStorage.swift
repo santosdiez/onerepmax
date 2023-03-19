@@ -10,7 +10,9 @@ import Foundation
 
 protocol ExerciseStorage {
     var exercises: CurrentValueSubject<[Exercise], Never> { get }
+    var exerciseDetail: CurrentValueSubject<Exercise?, Never> { get }
     
+    func fetchExercise(by id: UUID) throws
     func add(exercises: [Exercise]) throws
     func deleteAll() throws
 }

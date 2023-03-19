@@ -9,7 +9,7 @@ import Combine
 import Foundation
 
 struct ExerciseListItem: Identifiable {
-    let id: ObjectIdentifier
+    let id: UUID
     let name: String
     let oneRepMax: Decimal?
 }

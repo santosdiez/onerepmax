@@ -9,7 +9,7 @@ import Foundation
 
 struct OneRepMax {
     /// Unique identifier for a given instance
-    let id: ObjectIdentifier?
+    let id: UUID
     
     /// Date for the 1RM record
     let date: Date
@@ -18,7 +18,7 @@ struct OneRepMax {
     let oneRepMax: Decimal
     
     init(
-        id: ObjectIdentifier? = nil,
+        id: UUID,
         date: Date,
         oneRepMax: Decimal
     ) {

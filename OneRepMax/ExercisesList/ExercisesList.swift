@@ -8,13 +8,13 @@
 import Foundation
 import SwiftUI
 
-struct ExercisesList<ViewModel>: View where ViewModel: ExercisesListViewModelProtocol {
+struct ExercisesList<ViewModel: ExercisesListViewModelProtocol>: View {
     @StateObject var viewModel: ViewModel
     
     var body: some View {
         listView
-            .listStyle(PlainListStyle())
-            .navigationTitle("sExerciseListTitle")
+            .listStyle(.plain)
+            .navigationBarTitle("sExerciseListTitle", displayMode: .inline)
     }
     
     @ViewBuilder
@@ -38,11 +38,16 @@ struct ExercisesList<ViewModel>: View where ViewModel: ExercisesListViewModelPro
         List {
             ForEach(viewModel.exercises) { exercise in
                 ZStack {
-                    NavigationLink(destination: EmptyView()) {
+                    NavigationLink(destination: ExerciseDetail(
+                        viewModel: ExerciseDetailViewModel(
+                            model: ExerciseDetailModel(exerciseId: exercise.id)
+                        )
+                    )) {
                         EmptyView()
                     }.opacity(0.0)
                     ExerciseRow(exercise: exercise)
                 }
+                .listRowInsets(EdgeInsets())
             }
         }
     }
@@ -55,7 +60,7 @@ struct ExerciseRow: View {
         HStack(alignment: .top) {
             VStack(alignment: .leading, spacing: 10) {
                 Text(exercise.name)
-                    .font(.headline)
+                    .font(.title3.bold())
                 Text("sExerciseRowSubtitle")
                     .font(.caption2)
                     .foregroundColor(Color.gray)
@@ -70,6 +75,6 @@ struct ExerciseRow: View {
                 }
             }
         }
-        .padding(.vertical, 10)
+        .padding(.all, 10)
     }
 }

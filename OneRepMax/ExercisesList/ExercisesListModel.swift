@@ -22,12 +22,10 @@ struct ExerciseListModel: ExerciseListModelProtocol {
     }
 }
 
-private extension ExerciseListItem {
+extension ExerciseListItem {
     static func fromExercise(_ exercise: Exercise) -> ExerciseListItem? {
-        guard let id = exercise.id else { return nil }
-        
         return ExerciseListItem(
-            id: id,
+            id: exercise.id,
             name: exercise.name,
             oneRepMax: exercise.overallOneRepMax
         )

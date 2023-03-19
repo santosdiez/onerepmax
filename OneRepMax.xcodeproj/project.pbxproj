@@ -19,6 +19,9 @@
 		001F090E29C66C37005A47EA /* FileExerciseImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F090D29C66C37005A47EA /* FileExerciseImporter.swift */; };
 		001F091029C67E57005A47EA /* OneRepMax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F090F29C67E57005A47EA /* OneRepMax.swift */; };
 		001F091229C68E47005A47EA /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F091129C68E47005A47EA /* StorageManager.swift */; };
+		001F091529C69840005A47EA /* ExerciseDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F091429C69840005A47EA /* ExerciseDetail.swift */; };
+		001F091729C698A3005A47EA /* ExerciseDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F091629C698A3005A47EA /* ExerciseDetailViewModel.swift */; };
+		001F091929C698AD005A47EA /* ExerciseDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F091829C698AD005A47EA /* ExerciseDetailModel.swift */; };
 		00CDE54929C35E52007AAC2B /* OneRepMaxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDE54829C35E52007AAC2B /* OneRepMaxApp.swift */; };
 		00CDE54B29C35E52007AAC2B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDE54A29C35E52007AAC2B /* ContentView.swift */; };
 		00CDE54D29C35E55007AAC2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00CDE54C29C35E55007AAC2B /* Assets.xcassets */; };
@@ -75,6 +78,9 @@
 		001F090D29C66C37005A47EA /* FileExerciseImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileExerciseImporter.swift; sourceTree = "<group>"; };
 		001F090F29C67E57005A47EA /* OneRepMax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneRepMax.swift; sourceTree = "<group>"; };
 		001F091129C68E47005A47EA /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		001F091429C69840005A47EA /* ExerciseDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetail.swift; sourceTree = "<group>"; };
+		001F091629C698A3005A47EA /* ExerciseDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailViewModel.swift; sourceTree = "<group>"; };
+		001F091829C698AD005A47EA /* ExerciseDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailModel.swift; sourceTree = "<group>"; };
 		00CDE54529C35E52007AAC2B /* OneRepMax.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneRepMax.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00CDE54829C35E52007AAC2B /* OneRepMaxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneRepMaxApp.swift; sourceTree = "<group>"; };
 		00CDE54A29C35E52007AAC2B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -180,6 +186,16 @@
 			path = Importer;
 			sourceTree = "<group>";
 		};
+		001F091329C6982B005A47EA /* ExerciseDetail */ = {
+			isa = PBXGroup;
+			children = (
+				001F091429C69840005A47EA /* ExerciseDetail.swift */,
+				001F091629C698A3005A47EA /* ExerciseDetailViewModel.swift */,
+				001F091829C698AD005A47EA /* ExerciseDetailModel.swift */,
+			);
+			path = ExerciseDetail;
+			sourceTree = "<group>";
+		};
 		00CDE53C29C35E52007AAC2B = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +219,7 @@
 		00CDE54729C35E52007AAC2B /* OneRepMax */ = {
 			isa = PBXGroup;
 			children = (
+				001F091329C6982B005A47EA /* ExerciseDetail */,
 				001F08F629C61843005A47EA /* ExercisesList */,
 				001F08E229C3E73B005A47EA /* Info.plist */,
 				001F08E129C3E65A005A47EA /* Persistence */,
@@ -375,6 +392,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				001F08FB29C61888005A47EA /* ExercisesListViewModel.swift in Sources */,
+				001F091729C698A3005A47EA /* ExerciseDetailViewModel.swift in Sources */,
 				00CDE55229C35E55007AAC2B /* CoreDataExerciseStorage.swift in Sources */,
 				001F090629C61B07005A47EA /* ExerciseLog.swift in Sources */,
 				00CDE55529C35E55007AAC2B /* OneRepMax.xcdatamodeld in Sources */,
@@ -384,10 +402,12 @@
 				001F090E29C66C37005A47EA /* FileExerciseImporter.swift in Sources */,
 				001F090029C61A46005A47EA /* ExerciseStorage.swift in Sources */,
 				00CDE54929C35E52007AAC2B /* OneRepMaxApp.swift in Sources */,
+				001F091529C69840005A47EA /* ExerciseDetail.swift in Sources */,
 				001F08FD29C61892005A47EA /* ExercisesListModel.swift in Sources */,
 				001F091029C67E57005A47EA /* OneRepMax.swift in Sources */,
 				001F091229C68E47005A47EA /* StorageManager.swift in Sources */,
 				001F090429C61AFE005A47EA /* Exercise.swift in Sources */,
+				001F091929C698AD005A47EA /* ExerciseDetailModel.swift in Sources */,
 				001F090C29C626A8005A47EA /* ExerciseImporter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

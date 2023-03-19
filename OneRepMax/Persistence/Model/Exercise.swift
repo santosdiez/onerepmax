@@ -9,7 +9,7 @@ import Foundation
 
 struct Exercise {
     /// Unique identifier of an instance
-    let id: ObjectIdentifier?
+    let id: UUID
     
     /// Name of the exercise (e.g. "Bench press")
     let name: String
@@ -24,7 +24,7 @@ struct Exercise {
     let overallOneRepMax: Decimal?
     
     init(
-        id: ObjectIdentifier? = nil,
+        id: UUID,
         name: String,
         logs: [ExerciseLog],
         oneRepMaxs: [OneRepMax],
