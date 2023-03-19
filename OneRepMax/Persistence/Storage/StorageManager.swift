@@ -9,6 +9,6 @@ import Foundation
 
 /// Utility enum intended to store the chosen implementation for the different storage protocols
 enum StorageManager {
-    static let exerciseStorage = CoreDataExerciseStorage.shared
-    static let exerciseStoragePreview = CoreDataExerciseStorage.preview
+    static let exerciseStorage: ExerciseStorage = CoreDataExerciseStorage.shared
+    static let exerciseStoragePreview: ExerciseStorage = CoreDataExerciseStorage.preview
 }

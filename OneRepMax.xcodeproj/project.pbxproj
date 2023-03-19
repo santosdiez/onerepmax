@@ -22,6 +22,8 @@
 		001F091529C69840005A47EA /* ExerciseDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F091429C69840005A47EA /* ExerciseDetail.swift */; };
 		001F091729C698A3005A47EA /* ExerciseDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F091629C698A3005A47EA /* ExerciseDetailViewModel.swift */; };
 		001F091929C698AD005A47EA /* ExerciseDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F091829C698AD005A47EA /* ExerciseDetailModel.swift */; };
+		001F091E29C77A8A005A47EA /* ExercisesListModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F091D29C77A8A005A47EA /* ExercisesListModelTests.swift */; };
+		001F092029C77EBF005A47EA /* ExercisesListModelFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F091F29C77EBF005A47EA /* ExercisesListModelFake.swift */; };
 		00CDE54929C35E52007AAC2B /* OneRepMaxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDE54829C35E52007AAC2B /* OneRepMaxApp.swift */; };
 		00CDE54B29C35E52007AAC2B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDE54A29C35E52007AAC2B /* ContentView.swift */; };
 		00CDE54D29C35E55007AAC2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00CDE54C29C35E55007AAC2B /* Assets.xcassets */; };
@@ -81,6 +83,8 @@
 		001F091429C69840005A47EA /* ExerciseDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetail.swift; sourceTree = "<group>"; };
 		001F091629C698A3005A47EA /* ExerciseDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailViewModel.swift; sourceTree = "<group>"; };
 		001F091829C698AD005A47EA /* ExerciseDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailModel.swift; sourceTree = "<group>"; };
+		001F091D29C77A8A005A47EA /* ExercisesListModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesListModelTests.swift; sourceTree = "<group>"; };
+		001F091F29C77EBF005A47EA /* ExercisesListModelFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesListModelFake.swift; sourceTree = "<group>"; };
 		00CDE54529C35E52007AAC2B /* OneRepMax.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneRepMax.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00CDE54829C35E52007AAC2B /* OneRepMaxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneRepMaxApp.swift; sourceTree = "<group>"; };
 		00CDE54A29C35E52007AAC2B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -196,6 +200,29 @@
 			path = ExerciseDetail;
 			sourceTree = "<group>";
 		};
+		001F091A29C779DD005A47EA /* ExerciseList */ = {
+			isa = PBXGroup;
+			children = (
+				001F091D29C77A8A005A47EA /* ExercisesListModelTests.swift */,
+			);
+			path = ExerciseList;
+			sourceTree = "<group>";
+		};
+		001F091B29C779E6005A47EA /* ExerciseDetail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ExerciseDetail;
+			sourceTree = "<group>";
+		};
+		001F091C29C77A53005A47EA /* Fakes */ = {
+			isa = PBXGroup;
+			children = (
+				001F091F29C77EBF005A47EA /* ExercisesListModelFake.swift */,
+			);
+			path = Fakes;
+			sourceTree = "<group>";
+		};
 		00CDE53C29C35E52007AAC2B = {
 			isa = PBXGroup;
 			children = (
@@ -244,6 +271,9 @@
 		00CDE55D29C35E56007AAC2B /* OneRepMaxTests */ = {
 			isa = PBXGroup;
 			children = (
+				001F091C29C77A53005A47EA /* Fakes */,
+				001F091B29C779E6005A47EA /* ExerciseDetail */,
+				001F091A29C779DD005A47EA /* ExerciseList */,
 				00CDE55E29C35E56007AAC2B /* OneRepMaxTests.swift */,
 			);
 			path = OneRepMaxTests;
@@ -417,6 +447,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				00CDE55F29C35E56007AAC2B /* OneRepMaxTests.swift in Sources */,
+				001F091E29C77A8A005A47EA /* ExercisesListModelTests.swift in Sources */,
+				001F092029C77EBF005A47EA /* ExercisesListModelFake.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

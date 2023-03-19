@@ -20,7 +20,7 @@ struct OneRepMaxItem {
 }
 
 struct ExerciseDetailItem {
-    let exerciseListItem: ExerciseListItem
+    let exerciseListItem: ExercisesListItem
     let oneRepMaxData: [OneRepMaxItem]
 }
 

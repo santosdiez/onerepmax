@@ -15,13 +15,11 @@ struct PersistenceController {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
         
-        [
-            "Barbell Bench Press",
-            "Back Squat"
-        ].forEach {
+        ["Back Squat", "Barbell Bench Press"].forEach {
             let newExercise = CDExercise(context: viewContext)
+            newExercise.id = UUID()
             newExercise.name = $0
-            newExercise.overallOneRepMax = NSDecimalNumber(value: Int.random(in: 100...300))
+            newExercise.overallOneRepMax = NSDecimalNumber(value: $0.count)
         }
         do {
             try viewContext.save()

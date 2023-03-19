@@ -8,23 +8,23 @@
 import Combine
 import Foundation
 
-protocol ExerciseListModelProtocol {
-    var exercises: AnyPublisher<[ExerciseListItem], Never> { get }
+protocol ExercisesListModelProtocol {
+    var exercises: AnyPublisher<[ExercisesListItem], Never> { get }
 }
 
-struct ExerciseListModel: ExerciseListModelProtocol {
-    var exercises: AnyPublisher<[ExerciseListItem], Never>
+struct ExercisesListModel: ExercisesListModelProtocol {
+    var exercises: AnyPublisher<[ExercisesListItem], Never>
     
     init(exercisesStorage: ExerciseStorage) {
         exercises = exercisesStorage.exercises.map({
-            $0.compactMap({ ExerciseListItem.fromExercise($0) })
+            $0.compactMap({ ExercisesListItem.fromExercise($0) })
         }).eraseToAnyPublisher()
     }
 }
 
-extension ExerciseListItem {
-    static func fromExercise(_ exercise: Exercise) -> ExerciseListItem? {
-        return ExerciseListItem(
+extension ExercisesListItem {
+    static func fromExercise(_ exercise: Exercise) -> ExercisesListItem? {
+        return ExercisesListItem(
             id: exercise.id,
             name: exercise.name,
             oneRepMax: exercise.overallOneRepMax

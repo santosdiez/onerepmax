@@ -39,7 +39,7 @@ class ExerciseDetailModel: ExerciseDetailModelProtocol {
 extension ExerciseDetailItem {
     static func fromExercise(_ exercise: Exercise?) -> ExerciseDetailItem? {
         guard let exercise = exercise,
-              let listItem = ExerciseListItem.fromExercise(exercise) else { return nil }
+              let listItem = ExercisesListItem.fromExercise(exercise) else { return nil }
         
         return ExerciseDetailItem(
             exerciseListItem: listItem,

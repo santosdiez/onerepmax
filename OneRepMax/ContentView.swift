@@ -15,7 +15,7 @@ struct ContentView: View {
         NavigationView {
             ExercisesList(
                 viewModel: ExercisesListViewModel(
-                    model: ExerciseListModel(
+                    model: ExercisesListModel(
                         exercisesStorage: exerciseStorage
                     )
                 )

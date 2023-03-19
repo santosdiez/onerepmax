@@ -54,7 +54,7 @@ struct ExercisesList<ViewModel: ExercisesListViewModelProtocol>: View {
 }
 
 struct ExerciseRow: View {
-    let exercise: ExerciseListItem
+    let exercise: ExercisesListItem
     
     var body: some View {
         HStack(alignment: .top) {

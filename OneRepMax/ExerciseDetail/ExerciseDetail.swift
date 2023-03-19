@@ -41,4 +41,3 @@ struct ExerciseDetail<ViewModel: ExerciseDetailViewModelProtocol>: View {
         }
     }
 }
-

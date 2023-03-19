@@ -8,22 +8,22 @@
 import Combine
 import Foundation
 
-struct ExerciseListItem: Identifiable {
+struct ExercisesListItem: Identifiable {
     let id: UUID
     let name: String
     let oneRepMax: Decimal?
 }
 
 protocol ExercisesListViewModelProtocol: ObservableObject {
-    var exercises: [ExerciseListItem] { get set }
+    var exercises: [ExercisesListItem] { get set }
 }
 
 class ExercisesListViewModel: ExercisesListViewModelProtocol {
-    @Published var exercises: [ExerciseListItem] = []
-    private let model: ExerciseListModelProtocol
+    @Published var exercises: [ExercisesListItem] = []
+    private let model: ExercisesListModelProtocol
     private var cancellable: AnyCancellable?
     
-    init(model: ExerciseListModelProtocol) {
+    init(model: ExercisesListModelProtocol) {
         self.model = model
         cancellable = model.exercises.sink { exercises in
             self.exercises = exercises
