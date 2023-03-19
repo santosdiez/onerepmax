@@ -62,8 +62,8 @@ struct ExerciseRow: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
             VStack(alignment: .trailing) {
-                if let oneRepMax = exercise.oneRepMax {
-                    Text("\(oneRepMax, specifier: "%.1f")")
+                if let oneRepMax = exercise.oneRepMax?.formatted() {
+                    Text(oneRepMax)
                         .font(.title2)
                 } else {
                     Text("sNotAvailable")

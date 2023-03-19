@@ -21,6 +21,7 @@ struct PersistenceController {
         ].forEach {
             let newExercise = CDExercise(context: viewContext)
             newExercise.name = $0
+            newExercise.overallOneRepMax = NSDecimalNumber(value: Int.random(in: 100...300))
         }
         do {
             try viewContext.save()

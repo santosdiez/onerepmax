@@ -37,7 +37,7 @@ struct ExerciseImporterImpl<Storage>: ExerciseImporter where Storage: ExerciseSt
             guard let date = date(from: log[0]),
                   let sets = Int(log[2]),
                   let reps = Int(log[3]),
-                  let weight = Double(log[4]) else {
+                  let weight = try? Decimal(log[4], format: .number) else {
                       return
                   }
 
@@ -46,13 +46,29 @@ struct ExerciseImporterImpl<Storage>: ExerciseImporter where Storage: ExerciseSt
                 date: date,
                 sets: sets,
                 reps: reps,
-                weight: weight,
-                oneRepMax: calculateRM(for: weight, reps: reps)
+                weight: weight
             ))
         }
         
-        let exercises = exerciseLogs.map { name, logs in
-            Exercise(name: name, logs: logs)
+        let exercises: [Exercise] = exerciseLogs.map { name, logs in
+            // Group workout logs for a given exercise by date to calculate the 1RM per date
+            let grouped = Dictionary(grouping: logs, by: { $0.date })
+            
+            // The value we'll keep will be the max of all the calculated 1RM for the date
+            let oneRepMaxs: [OneRepMax] = grouped.compactMap { date, groupedLogs in
+                guard let oneRepMax = groupedLogs.map({
+                    calculateRM(for: $0.weight, reps: $0.reps)
+                }).max() else { return nil }
+
+                return OneRepMax(date: date, oneRepMax: oneRepMax)
+            }
+
+            return Exercise(
+                name: name,
+                logs: logs,
+                oneRepMaxs: oneRepMaxs,
+                overallOneRepMax: oneRepMaxs.max(by: { $0.oneRepMax < $1.oneRepMax })?.oneRepMax
+            )
         }
         
         do {
@@ -79,11 +95,13 @@ private extension ExerciseImporterImpl {
         dateFormatter.date(from: string)
     }
 
-    func calculateRM(for weight: Double, reps: Int) -> Double {
+    func calculateRM(for weight: Decimal, reps: Int) -> Decimal {
         // Brzycki Formula
         // See https://en.wikipedia.org/wiki/One-repetition_maximum
-        let value = weight * Double((36 / (37 - reps)))
+        var value = weight * Decimal((36 / (37 - reps)))
+        var result = Decimal()
         // Round to one decimal place
-        return round(value * 10) / 10.0
+        NSDecimalRound(&result, &value, 1, .plain)
+        return result
     }
 }

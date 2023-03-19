@@ -49,14 +49,21 @@ class CoreDataExerciseStorage: NSObject, ExerciseStorage {
         exercises.forEach {
             let coreDataExercise = CDExercise(context: context)
             coreDataExercise.name = $0.name
+            coreDataExercise.overallOneRepMax = $0.overallOneRepMax as NSDecimalNumber?
+            
+            $0.oneRepMaxs.forEach {
+                let coreDataOneRM = CDOneRepMax(context: context)
+                coreDataOneRM.date = $0.date
+                coreDataOneRM.oneRepMax = NSDecimalNumber(decimal: $0.oneRepMax)
+                coreDataOneRM.exercise = coreDataExercise
+            }
             
             $0.logs.forEach {
                 let coreDataLog = CDExerciseLog(context: context)
                 coreDataLog.date = $0.date
                 coreDataLog.sets = Int16($0.sets)
                 coreDataLog.reps = Int16($0.reps)
-                coreDataLog.weight = $0.weight
-                coreDataLog.oneRepMax = $0.oneRepMax
+                coreDataLog.weight = NSDecimalNumber(decimal: $0.weight)
                 coreDataLog.exercise = coreDataExercise
             }
         }
@@ -108,27 +115,47 @@ private extension CDExercise {
     var typedLogs: [CDExerciseLog]? {
         logs?.allObjects as? [CDExerciseLog]
     }
+    
+    var typedOneRepMaxs: [CDOneRepMax]? {
+        oneRepMaxs?.allObjects as? [CDOneRepMax]
+    }
 }
 
 private extension Exercise {
     static func fromCoreData(instance: CDExercise) -> Exercise {
         let logs = instance.typedLogs?.compactMap { ExerciseLog.fromCoreData(instance: $0) } ?? []
+        let oneRepMaxs = instance.typedOneRepMaxs?.compactMap { OneRepMax.fromCoreData(instance: $0) } ?? []
         
-        return Exercise(id: instance.id, name: instance.name ?? "-", logs: logs)
+        return Exercise(
+            id: instance.id,
+            name: instance.name ?? "-",
+            logs: logs,
+            oneRepMaxs: oneRepMaxs,
+            overallOneRepMax: instance.overallOneRepMax?.decimalValue
+        )
     }
 }
 
 private extension ExerciseLog {
     static func fromCoreData(instance: CDExerciseLog) -> ExerciseLog? {
-        guard let date = instance.date else { return nil }
+        guard let date = instance.date,
+              let weight = instance.weight?.decimalValue else { return nil }
               
         return ExerciseLog(
             id: instance.id,
             date: date,
             sets: Int(instance.sets),
             reps: Int(instance.reps),
-            weight: instance.weight,
-            oneRepMax: instance.oneRepMax
+            weight: weight
         )
+    }
+}
+
+private extension OneRepMax {
+    static func fromCoreData(instance: CDOneRepMax) -> OneRepMax? {
+        guard let date = instance.date,
+              let oneRepMax = instance.oneRepMax?.decimalValue else { return nil }
+        
+        return OneRepMax(id: instance.id, date: date, oneRepMax: oneRepMax)
     }
 }

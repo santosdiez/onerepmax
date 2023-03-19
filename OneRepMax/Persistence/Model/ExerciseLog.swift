@@ -12,22 +12,19 @@ struct ExerciseLog {
     let date: Date
     let sets: Int
     let reps: Int
-    let weight: Double
-    let oneRepMax: Double
+    let weight: Decimal
     
     init(
         id: ObjectIdentifier? = nil,
         date: Date,
         sets: Int,
         reps: Int,
-        weight: Double,
-        oneRepMax: Double
+        weight: Decimal
     ) {
         self.id = id
         self.date = date
         self.sets = sets
         self.reps = reps
         self.weight = weight
-        self.oneRepMax = oneRepMax
     }
 }

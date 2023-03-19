@@ -17,6 +17,7 @@
 		001F090929C61D51005A47EA /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F090829C61D51005A47EA /* PersistenceController.swift */; };
 		001F090C29C626A8005A47EA /* ExerciseImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F090B29C626A8005A47EA /* ExerciseImporter.swift */; };
 		001F090E29C66C37005A47EA /* ExerciseImporterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F090D29C66C37005A47EA /* ExerciseImporterImpl.swift */; };
+		001F091029C67E57005A47EA /* OneRepMax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F090F29C67E57005A47EA /* OneRepMax.swift */; };
 		00CDE54929C35E52007AAC2B /* OneRepMaxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDE54829C35E52007AAC2B /* OneRepMaxApp.swift */; };
 		00CDE54B29C35E52007AAC2B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDE54A29C35E52007AAC2B /* ContentView.swift */; };
 		00CDE54D29C35E55007AAC2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00CDE54C29C35E55007AAC2B /* Assets.xcassets */; };
@@ -71,6 +72,7 @@
 		001F090829C61D51005A47EA /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		001F090B29C626A8005A47EA /* ExerciseImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseImporter.swift; sourceTree = "<group>"; };
 		001F090D29C66C37005A47EA /* ExerciseImporterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseImporterImpl.swift; sourceTree = "<group>"; };
+		001F090F29C67E57005A47EA /* OneRepMax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneRepMax.swift; sourceTree = "<group>"; };
 		00CDE54529C35E52007AAC2B /* OneRepMax.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneRepMax.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00CDE54829C35E52007AAC2B /* OneRepMaxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneRepMaxApp.swift; sourceTree = "<group>"; };
 		00CDE54A29C35E52007AAC2B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			children = (
 				001F090329C61AFE005A47EA /* Exercise.swift */,
 				001F090529C61B07005A47EA /* ExerciseLog.swift */,
+				001F090F29C67E57005A47EA /* OneRepMax.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				001F090029C61A46005A47EA /* ExerciseStorage.swift in Sources */,
 				00CDE54929C35E52007AAC2B /* OneRepMaxApp.swift in Sources */,
 				001F08FD29C61892005A47EA /* ExercisesListModel.swift in Sources */,
+				001F091029C67E57005A47EA /* OneRepMax.swift in Sources */,
 				001F090429C61AFE005A47EA /* Exercise.swift in Sources */,
 				001F090C29C626A8005A47EA /* ExerciseImporter.swift in Sources */,
 			);

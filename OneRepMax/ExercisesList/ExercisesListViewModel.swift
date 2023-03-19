@@ -11,7 +11,7 @@ import Foundation
 struct ExerciseListItem: Identifiable {
     let id: ObjectIdentifier
     let name: String
-    let oneRepMax: Double?
+    let oneRepMax: Decimal?
 }
 
 protocol ExercisesListViewModelProtocol: ObservableObject {

@@ -29,7 +29,7 @@ private extension ExerciseListItem {
         return ExerciseListItem(
             id: id,
             name: exercise.name,
-            oneRepMax: exercise.logs.map({ $0.oneRepMax }).max()
+            oneRepMax: exercise.overallOneRepMax
         )
     }
 }
