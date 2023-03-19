@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct ExerciseImporterImpl<Storage>: ExerciseImporter where Storage: ExerciseStorage {
-    let exerciseStorage: Storage
+struct FileExerciseImporter: ExerciseImporter {
+    let exerciseStorage: ExerciseStorage
     
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -81,7 +81,7 @@ struct ExerciseImporterImpl<Storage>: ExerciseImporter where Storage: ExerciseSt
     }
 }
 
-private extension ExerciseImporterImpl {
+private extension FileExerciseImporter {
     func readFile(at url: URL) -> [[String]] {
         guard let content = try? String(contentsOf: url) else {
             return []

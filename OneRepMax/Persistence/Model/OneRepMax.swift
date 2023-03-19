@@ -8,8 +8,13 @@
 import Foundation
 
 struct OneRepMax {
+    /// Unique identifier for a given instance
     let id: ObjectIdentifier?
+    
+    /// Date for the 1RM record
     let date: Date
+    
+    /// Value of the theoretical 1RM
     let oneRepMax: Decimal
     
     init(

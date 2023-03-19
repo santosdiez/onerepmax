@@ -14,11 +14,9 @@ struct OneRepMaxApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView<CoreDataExerciseStorage>()
-                .environmentObject(CoreDataExerciseStorage.shared)
+            ContentView(exerciseStorage: StorageManager.exerciseStorage)
                 .preferredColorScheme(.dark)
         }
-        .handlesExternalEvents(matching: [])
     }
 }
 
@@ -35,8 +33,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 }
 
 class SceneDelegate: NSObject, UIWindowSceneDelegate {
-    private let exerciseImporter: ExerciseImporter = ExerciseImporterImpl(
-        exerciseStorage: CoreDataExerciseStorage.shared
+    private lazy var exerciseImporter: ExerciseImporter = FileExerciseImporter(
+        exerciseStorage: StorageManager.exerciseStorage
     )
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {

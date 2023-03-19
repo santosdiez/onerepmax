@@ -121,6 +121,7 @@ private extension CDExercise {
     }
 }
 
+// MARK: - Utility extensions to create plain models from CoreData instances
 private extension Exercise {
     static func fromCoreData(instance: CDExercise) -> Exercise {
         let logs = instance.typedLogs?.compactMap { ExerciseLog.fromCoreData(instance: $0) } ?? []

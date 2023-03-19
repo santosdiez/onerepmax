@@ -12,10 +12,10 @@ protocol ExerciseListModelProtocol {
     var exercises: AnyPublisher<[ExerciseListItem], Never> { get }
 }
 
-struct ExerciseListModel<Storage>: ExerciseListModelProtocol where Storage: ExerciseStorage {
+struct ExerciseListModel: ExerciseListModelProtocol {
     var exercises: AnyPublisher<[ExerciseListItem], Never>
     
-    init(exercisesStorage: Storage) {
+    init(exercisesStorage: ExerciseStorage) {
         exercises = exercisesStorage.exercises.map({
             $0.compactMap({ ExerciseListItem.fromExercise($0) })
         }).eraseToAnyPublisher()

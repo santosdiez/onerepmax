@@ -8,8 +8,8 @@
 import SwiftUI
 import CoreData
 
-struct ContentView<Storage>: View where Storage: ExerciseStorage {
-    @EnvironmentObject var exerciseStorage: Storage
+struct ContentView: View {
+    let exerciseStorage: ExerciseStorage
     
     var body: some View {
         NavigationView {
@@ -28,12 +28,10 @@ struct ContentView<Storage>: View where Storage: ExerciseStorage {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ContentView<CoreDataExerciseStorage>()
-                .environmentObject(CoreDataExerciseStorage.preview)
+            ContentView(exerciseStorage: StorageManager.exerciseStoragePreview)
                 .environment(\.locale, .init(identifier: "en"))
                 .preferredColorScheme(.dark)
-            ContentView<CoreDataExerciseStorage>()
-                .environmentObject(CoreDataExerciseStorage.preview)
+            ContentView(exerciseStorage: StorageManager.exerciseStoragePreview)
                 .environment(\.locale, .init(identifier: "es"))
                 .preferredColorScheme(.dark)
         }

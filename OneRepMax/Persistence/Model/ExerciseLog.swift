@@ -8,10 +8,19 @@
 import Foundation
 
 struct ExerciseLog {
+    /// Unique identifier for a given instance
     let id: ObjectIdentifier?
+    
+    /// Date when the exercise was performed
     let date: Date
+    
+    /// Number of sets
     let sets: Int
+    
+    /// Number of repetitions
     let reps: Int
+    
+    /// Weight used when performing the exercise
     let weight: Decimal
     
     init(

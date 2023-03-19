@@ -8,7 +8,7 @@
 import Combine
 import Foundation
 
-protocol ExerciseStorage: ObservableObject {
+protocol ExerciseStorage {
     var exercises: CurrentValueSubject<[Exercise], Never> { get }
     
     func add(exercises: [Exercise]) throws
