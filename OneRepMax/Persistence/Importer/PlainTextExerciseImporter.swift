@@ -1,5 +1,5 @@
 //
-//  ExerciseImporterImpl.swift
+//  PlainTextExerciseImporter.swift
 //  OneRepMax
 //
 //  Created by Borja Santos-Díez on 18/3/23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FileExerciseImporter: ExerciseImporter {
+struct PlainTextExerciseImporter: ExerciseImporter {
     let exerciseStorage: ExerciseStorage
     
     private let dateFormatter: DateFormatter = {
@@ -83,7 +83,7 @@ struct FileExerciseImporter: ExerciseImporter {
     }
 }
 
-private extension FileExerciseImporter {
+private extension PlainTextExerciseImporter {
     func readFile(at url: URL) -> [[String]] {
         guard let content = try? String(contentsOf: url) else {
             return []

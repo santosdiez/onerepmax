@@ -33,7 +33,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 }
 
 class SceneDelegate: NSObject, UIWindowSceneDelegate {
-    private lazy var exerciseImporter: ExerciseImporter = FileExerciseImporter(
+    private lazy var exerciseImporter: ExerciseImporter = PlainTextExerciseImporter(
         exerciseStorage: StorageManager.exerciseStorage
     )
     

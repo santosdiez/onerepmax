@@ -1,5 +1,5 @@
 //
-//  ExercisesListView.swift
+//  ExercisesList.swift
 //  OneRepMax
 //
 //  Created by Borja Santos-Díez on 18/3/23.

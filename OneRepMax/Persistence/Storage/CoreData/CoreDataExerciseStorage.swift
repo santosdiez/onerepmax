@@ -133,6 +133,7 @@ class CoreDataExerciseStorage: NSObject, ExerciseStorage {
 }
 
 // MARK: - NSFetchedResultsControllerDelegate
+
 extension CoreDataExerciseStorage: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         guard let exercisesController = controller as? NSFetchedResultsController<CDExercise> else { return }
@@ -148,6 +149,7 @@ extension CoreDataExerciseStorage: NSFetchedResultsControllerDelegate {
 }
 
 // MARK: - NSFetchedResultsController: Utility extension to return already converted results
+
 extension NSFetchedResultsController where ResultType == CDExercise {
     var fetchedExercises: [Exercise]? {
         return fetchedObjects?.compactMap { Exercise.fromCoreData(instance: $0) }
@@ -155,6 +157,7 @@ extension NSFetchedResultsController where ResultType == CDExercise {
 }
 
 // MARK: - CDExercise: Utility extension to return a typed collection for the logs
+
 private extension CDExercise {
     var typedLogs: [CDExerciseLog]? {
         logs?.allObjects as? [CDExerciseLog]
@@ -166,6 +169,7 @@ private extension CDExercise {
 }
 
 // MARK: - Utility extensions to create plain models from CoreData instances
+
 private extension Exercise {
     static func fromCoreData(instance: CDExercise) -> Exercise? {
         guard let id = instance.id,

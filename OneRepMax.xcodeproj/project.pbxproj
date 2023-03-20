@@ -16,7 +16,7 @@
 		001F090629C61B07005A47EA /* ExerciseLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F090529C61B07005A47EA /* ExerciseLog.swift */; };
 		001F090929C61D51005A47EA /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F090829C61D51005A47EA /* PersistenceController.swift */; };
 		001F090C29C626A8005A47EA /* ExerciseImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F090B29C626A8005A47EA /* ExerciseImporter.swift */; };
-		001F090E29C66C37005A47EA /* FileExerciseImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F090D29C66C37005A47EA /* FileExerciseImporter.swift */; };
+		001F090E29C66C37005A47EA /* PlainTextExerciseImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F090D29C66C37005A47EA /* PlainTextExerciseImporter.swift */; };
 		001F091029C67E57005A47EA /* OneRepMax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F090F29C67E57005A47EA /* OneRepMax.swift */; };
 		001F091229C68E47005A47EA /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F091129C68E47005A47EA /* StorageManager.swift */; };
 		001F091529C69840005A47EA /* ExerciseDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F091429C69840005A47EA /* ExerciseDetail.swift */; };
@@ -74,7 +74,7 @@
 		001F090529C61B07005A47EA /* ExerciseLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseLog.swift; sourceTree = "<group>"; };
 		001F090829C61D51005A47EA /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		001F090B29C626A8005A47EA /* ExerciseImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseImporter.swift; sourceTree = "<group>"; };
-		001F090D29C66C37005A47EA /* FileExerciseImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileExerciseImporter.swift; sourceTree = "<group>"; };
+		001F090D29C66C37005A47EA /* PlainTextExerciseImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainTextExerciseImporter.swift; sourceTree = "<group>"; };
 		001F090F29C67E57005A47EA /* OneRepMax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneRepMax.swift; sourceTree = "<group>"; };
 		001F091129C68E47005A47EA /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		001F091429C69840005A47EA /* ExerciseDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetail.swift; sourceTree = "<group>"; };
@@ -178,7 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				001F090B29C626A8005A47EA /* ExerciseImporter.swift */,
-				001F090D29C66C37005A47EA /* FileExerciseImporter.swift */,
+				001F090D29C66C37005A47EA /* PlainTextExerciseImporter.swift */,
 			);
 			path = Importer;
 			sourceTree = "<group>";
@@ -282,7 +282,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00CDE56E29C35E56007AAC2B /* Build configuration list for PBXNativeTarget "OneRepMax" */;
 			buildPhases = (
-				001F093029C8722E005A47EA /* SwiftLint */,
 				00CDE54129C35E52007AAC2B /* Sources */,
 				00CDE54229C35E52007AAC2B /* Frameworks */,
 				00CDE54329C35E52007AAC2B /* Resources */,
@@ -380,27 +379,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		001F093029C8722E005A47EA /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftLint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed\"\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		00CDE54129C35E52007AAC2B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -414,7 +392,7 @@
 				001F090929C61D51005A47EA /* PersistenceController.swift in Sources */,
 				00CDE54B29C35E52007AAC2B /* ContentView.swift in Sources */,
 				001F08F929C61866005A47EA /* ExercisesList.swift in Sources */,
-				001F090E29C66C37005A47EA /* FileExerciseImporter.swift in Sources */,
+				001F090E29C66C37005A47EA /* PlainTextExerciseImporter.swift in Sources */,
 				001F090029C61A46005A47EA /* ExerciseStorage.swift in Sources */,
 				00CDE54929C35E52007AAC2B /* OneRepMaxApp.swift in Sources */,
 				001F091529C69840005A47EA /* ExerciseDetail.swift in Sources */,

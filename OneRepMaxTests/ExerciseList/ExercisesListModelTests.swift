@@ -1,5 +1,5 @@
 //
-//  ExerciseListModelTests.swift
+//  ExercisesListModelTests.swift
 //  OneRepMaxTests
 //
 //  Created by Borja Santos-Díez on 19/3/23.
