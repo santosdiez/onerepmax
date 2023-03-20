@@ -78,3 +78,25 @@ struct ExerciseRow: View {
         .padding()
     }
 }
+
+struct ExercisesList_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            ExercisesList(
+                viewModel: ExercisesListViewModel(
+                    model: ExercisesListModel(exercisesStorage: StorageManager.exerciseStoragePreview)
+                )
+            )
+            .environment(\.locale, .init(identifier: "en"))
+            .preferredColorScheme(.dark)
+            
+            ExercisesList(
+                viewModel: ExercisesListViewModel(
+                    model: ExercisesListModel(exercisesStorage: StorageManager.exerciseStoragePreview)
+                )
+            )
+            .environment(\.locale, .init(identifier: "es"))
+            .preferredColorScheme(.dark)
+        }
+    }
+}

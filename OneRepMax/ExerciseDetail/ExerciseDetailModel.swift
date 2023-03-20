@@ -31,7 +31,7 @@ class ExerciseDetailModel: ExerciseDetailModelProtocol {
         do {
             try exerciseStorage.fetchExercise(by: exerciseId)
         } catch {
-            print(error.localizedDescription)
+            assertionFailure(error.localizedDescription)
         }
     }
 }

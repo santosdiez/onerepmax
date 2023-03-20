@@ -23,12 +23,11 @@ final class ExercisesListModelTests: XCTestCase {
         cancellable = model.exercises.sink { exercises in
             XCTAssertEqual(exercises.count, 2)
             
-            let name = "Back Squat"
             let firstExercise = exercises.first // Sorted alphabetically
             
             // Then
-            XCTAssertEqual(firstExercise?.name, name)
-            XCTAssertEqual(firstExercise?.oneRepMax, Decimal(name.count))
+            XCTAssertEqual(firstExercise?.name, "Back Squat")
+            XCTAssertEqual(firstExercise?.oneRepMax, 100)
             expectation.fulfill()
         }
         

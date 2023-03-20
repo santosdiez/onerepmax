@@ -1,5 +1,5 @@
 //
-//  ExerciseListTests.swift
+//  ExerciseDetailTests.swift
 //  OneRepMaxTests
 //
 //  Created by Borja Santos-Díez on 19/3/23.
@@ -11,16 +11,16 @@ import SnapshotTesting
 import SwiftUI
 import XCTest
 
-final class ExercisesListTests: XCTestCase {
+final class ExerciseDetailTests: XCTestCase {
     private let traitDarkMode = UITraitCollection(userInterfaceStyle: .dark)
     
     func testDefaultAppearance() {
-        let list = ExercisesList(
-            viewModel: ExercisesListViewModel(model: ExercisesListModelFake())
+        let detailView = ExerciseDetail(
+            viewModel: ExerciseDetailViewModel(model: ExerciseDetailModelFake())
         )
         .environment(\.locale, .init(identifier: "en"))
         
-        let viewController = UIHostingController(rootView: list)
+        let viewController = UIHostingController(rootView: detailView)
         
         // Uncomment this line to re-generate the snapshots
         // isRecording = true

@@ -41,3 +41,31 @@ struct ExerciseDetail<ViewModel: ExerciseDetailViewModelProtocol>: View {
         }
     }
 }
+
+struct ExerciseDetail_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            ExerciseDetail(
+                viewModel: ExerciseDetailViewModel(
+                    model: ExerciseDetailModel(
+                        exerciseStorage: StorageManager.exerciseStoragePreview,
+                        exerciseId: StorageManager.exerciseStoragePreview.firstExercise!.id
+                    )
+                )
+            )
+            .environment(\.locale, .init(identifier: "en"))
+            .preferredColorScheme(.dark)
+            
+            ExerciseDetail(
+                viewModel: ExerciseDetailViewModel(
+                    model: ExerciseDetailModel(
+                        exerciseStorage: StorageManager.exerciseStoragePreview,
+                        exerciseId: StorageManager.exerciseStoragePreview.firstExercise!.id
+                    )
+                )
+            )
+            .environment(\.locale, .init(identifier: "es"))
+            .preferredColorScheme(.dark)
+        }
+    }
+}

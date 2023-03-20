@@ -24,16 +24,3 @@ struct ContentView: View {
         .navigationViewStyle(.stack)
     }
 }
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            ContentView(exerciseStorage: StorageManager.exerciseStoragePreview)
-                .environment(\.locale, .init(identifier: "en"))
-                .preferredColorScheme(.dark)
-            ContentView(exerciseStorage: StorageManager.exerciseStoragePreview)
-                .environment(\.locale, .init(identifier: "es"))
-                .preferredColorScheme(.dark)
-        }
-    }
-}

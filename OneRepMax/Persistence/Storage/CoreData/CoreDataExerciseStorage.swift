@@ -66,7 +66,7 @@ class CoreDataExerciseStorage: NSObject, ExerciseStorage {
             try exercisesFetchController.performFetch()
             exercises.value = exercisesFetchController.fetchedExercises ?? []
         } catch {
-            // TBD: Handle error
+            assertionFailure(error.localizedDescription)
         }
     }
     
