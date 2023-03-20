@@ -100,7 +100,7 @@ private extension FileExerciseImporter {
     func calculateRM(for weight: Decimal, reps: Int) -> Decimal {
         // Brzycki Formula
         // See https://en.wikipedia.org/wiki/One-repetition_maximum
-        var value = weight * Decimal((36 / (37 - reps)))
+        var value = weight * Decimal((36.0 / (37.0 - Double(reps))))
         var result = Decimal()
         // Round to one decimal place
         NSDecimalRound(&result, &value, 1, .plain)

@@ -26,7 +26,7 @@ struct ExerciseDetail<ViewModel: ExerciseDetailViewModelProtocol>: View {
             if let detail = viewModel.exerciseDetailItem {
                 ExerciseRow(exercise: detail.exerciseListItem)
                     .fixedSize(horizontal: false, vertical: true)
-                Text("\(detail.oneRepMaxData.count) data points")
+                OneRepMaxPlot(dataPoints: detail.oneRepMaxData)
                 Spacer()
             } else {
                 ProgressView()
@@ -41,6 +41,29 @@ struct ExerciseDetail<ViewModel: ExerciseDetailViewModelProtocol>: View {
         }
     }
 }
+
+extension OneRepMaxItem: Identifiable {
+    var id: UUID { UUID() }
+}
+
+struct OneRepMaxPlot: View {
+    var dataPoints: [OneRepMaxItem]
+    
+    var body: some View {
+        List {
+            ForEach(dataPoints) { oneRepMax in
+                HStack {
+                    Text(oneRepMax.date.formatted())
+                    Spacer()
+                    Text(oneRepMax.value.formatted())
+                }
+            }
+        }
+        .listStyle(.plain)
+    }
+}
+
+// MARK: - Previews
 
 struct ExerciseDetail_Previews: PreviewProvider {
     static var previews: some View {

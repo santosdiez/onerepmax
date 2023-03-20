@@ -38,6 +38,7 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
     )
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        // The app is registered to handle plain text files, so that we can easily import new workout data
         guard let url = URLContexts.first?.url else {
             return
         }

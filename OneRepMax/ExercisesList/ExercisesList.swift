@@ -19,36 +19,34 @@ struct ExercisesList<ViewModel: ExercisesListViewModelProtocol>: View {
     
     @ViewBuilder
     var listView: some View {
-        if viewModel.exercises.isEmpty {
-            emptyListView
-        } else {
-            objectsListView
+        List {
+            if viewModel.exercises.isEmpty {
+                emptyListView
+            } else {
+                exercisesListView
+            }
         }
     }
     
     var emptyListView: some View {
-        List {
-            Text("sEmptyList")
-                .font(.headline)
-                .padding(.vertical)
-        }
+        Text("sEmptyList")
+            .font(.headline)
+            .padding(.vertical)
     }
 
-    var objectsListView: some View {
-        List {
-            ForEach(viewModel.exercises) { exercise in
-                ZStack {
-                    NavigationLink(destination: ExerciseDetail(
-                        viewModel: ExerciseDetailViewModel(
-                            model: ExerciseDetailModel(exerciseId: exercise.id)
-                        )
-                    )) {
-                        EmptyView()
-                    }.opacity(0.0)
-                    ExerciseRow(exercise: exercise)
-                }
-                .listRowInsets(EdgeInsets())
+    var exercisesListView: some View {
+        ForEach(viewModel.exercises) { exercise in
+            ZStack {
+                NavigationLink(destination: ExerciseDetail(
+                    viewModel: ExerciseDetailViewModel(
+                        model: ExerciseDetailModel(exerciseId: exercise.id)
+                    )
+                )) {
+                    EmptyView()
+                }.opacity(0.0)
+                ExerciseRow(exercise: exercise)
             }
+            .listRowInsets(EdgeInsets())
         }
     }
 }
@@ -78,6 +76,8 @@ struct ExerciseRow: View {
         .padding()
     }
 }
+
+// MARK: - Previews
 
 struct ExercisesList_Previews: PreviewProvider {
     static var previews: some View {

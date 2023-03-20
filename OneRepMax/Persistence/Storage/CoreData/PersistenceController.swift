@@ -31,7 +31,8 @@ struct PersistenceController {
                 oneRepMax.id = UUID()
                 // Go back from the reference date in increments of 30 days (trying to get different months)
                 oneRepMax.date = referenceDate.addingTimeInterval(Double($0) * -86400 * 30)
-                oneRepMax.oneRepMax = NSDecimalNumber(value: Double.random(in: 100...200))
+                let randomMax = round(Double.random(in: 100...200) * 10) / 10
+                oneRepMax.oneRepMax = NSDecimalNumber(value: randomMax)
                 oneRepMax.exercise = newExercise
             }
         }

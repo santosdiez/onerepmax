@@ -282,6 +282,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00CDE56E29C35E56007AAC2B /* Build configuration list for PBXNativeTarget "OneRepMax" */;
 			buildPhases = (
+				001F093029C8722E005A47EA /* SwiftLint */,
 				00CDE54129C35E52007AAC2B /* Sources */,
 				00CDE54229C35E52007AAC2B /* Frameworks */,
 				00CDE54329C35E52007AAC2B /* Resources */,
@@ -378,6 +379,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		001F093029C8722E005A47EA /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		00CDE54129C35E52007AAC2B /* Sources */ = {
