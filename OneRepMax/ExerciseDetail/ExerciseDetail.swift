@@ -46,7 +46,7 @@ struct ExerciseDetail<ViewModel: ExerciseDetailViewModelProtocol>: View {
 struct OneRepMaxPlot: View {
     var dataPoints: [OneRepMaxItem]
     @Environment(\.colorScheme) var colorScheme
-    private let dataPointWidth: CGFloat = 5
+    private let dataPointWidth: CGFloat = 6
 
     private var yAxisValuesRange: ClosedRange<Decimal> {
         let values = dataPoints.map { $0.value }

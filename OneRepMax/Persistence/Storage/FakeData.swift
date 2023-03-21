@@ -13,7 +13,7 @@ enum FakeData {
         let referenceDate = Date(timeIntervalSince1970: 1679306950)
 
         return (0..<10).reversed().map {
-            referenceDate.addingTimeInterval(Double($0) * -86400 * 30)
+            referenceDate.addingTimeInterval(Double($0) * -86400 * 15)
         }
     }()
     static let oneRepMaxValues: [Decimal] = [100, 150, 180, 175, 150.5, 110, 210, 220, 250, 240]
