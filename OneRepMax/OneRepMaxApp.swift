@@ -32,15 +32,18 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 }
 
 class SceneDelegate: NSObject, UIWindowSceneDelegate {
-    private lazy var exerciseImporter: ExerciseImporter = PlainTextExerciseImporter(
-        exerciseStorage: StorageManager.exerciseStorage
-    )
+    private lazy var exerciseImporters: [String: ExerciseImporter] = [
+        "txt": PlainTextExerciseImporter(exerciseStorage: StorageManager.exerciseStorage)
+    ]
 
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         // The app is registered to handle plain text files, so that we can easily import new workout data
         guard let url = URLContexts.first?.url else {
             return
         }
-        exerciseImporter.importExercises(from: url)
+
+        if let importer = exerciseImporters[url.pathExtension] {
+            importer.importExercises(from: url)
+        }
     }
 }

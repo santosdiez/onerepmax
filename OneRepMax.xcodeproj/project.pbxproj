@@ -32,6 +32,7 @@
 		001F092D29C79F2B005A47EA /* ExerciseDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F092C29C79F2B005A47EA /* ExerciseDetailTests.swift */; };
 		001F092F29C79F3E005A47EA /* ExerciseDetailModelFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F092E29C79F3E005A47EA /* ExerciseDetailModelFake.swift */; };
 		00AADDD629C942AA0077B873 /* FakeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AADDD529C942AA0077B873 /* FakeData.swift */; };
+		00AADDDC29C9FADA0077B873 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00AADDDB29C9FADA0077B873 /* Launch Screen.storyboard */; };
 		00CDE54929C35E52007AAC2B /* OneRepMaxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDE54829C35E52007AAC2B /* OneRepMaxApp.swift */; };
 		00CDE54B29C35E52007AAC2B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDE54A29C35E52007AAC2B /* ContentView.swift */; };
 		00CDE54D29C35E55007AAC2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00CDE54C29C35E55007AAC2B /* Assets.xcassets */; };
@@ -90,6 +91,7 @@
 		001F092C29C79F2B005A47EA /* ExerciseDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailTests.swift; sourceTree = "<group>"; };
 		001F092E29C79F3E005A47EA /* ExerciseDetailModelFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailModelFake.swift; sourceTree = "<group>"; };
 		00AADDD529C942AA0077B873 /* FakeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeData.swift; sourceTree = "<group>"; };
+		00AADDDB29C9FADA0077B873 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		00CDE54529C35E52007AAC2B /* OneRepMax.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneRepMax.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00CDE54829C35E52007AAC2B /* OneRepMaxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneRepMaxApp.swift; sourceTree = "<group>"; };
 		00CDE54A29C35E52007AAC2B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -122,7 +124,9 @@
 		001F08DA29C3E3A3005A47EA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				00CDE54C29C35E55007AAC2B /* Assets.xcassets */,
 				001F08DF29C3E3BA005A47EA /* Localizable.strings */,
+				00AADDDB29C9FADA0077B873 /* Launch Screen.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -253,7 +257,6 @@
 				001F08DA29C3E3A3005A47EA /* Resources */,
 				00CDE54829C35E52007AAC2B /* OneRepMaxApp.swift */,
 				00CDE54A29C35E52007AAC2B /* ContentView.swift */,
-				00CDE54C29C35E55007AAC2B /* Assets.xcassets */,
 				00CDE55329C35E55007AAC2B /* OneRepMax.xcdatamodeld */,
 				00CDE54E29C35E55007AAC2B /* Preview Content */,
 			);
@@ -371,6 +374,7 @@
 			files = (
 				00CDE55029C35E55007AAC2B /* Preview Assets.xcassets in Resources */,
 				001F08DD29C3E3BA005A47EA /* Localizable.strings in Resources */,
+				00AADDDC29C9FADA0077B873 /* Launch Screen.storyboard in Resources */,
 				00CDE54D29C35E55007AAC2B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -586,9 +590,9 @@
 				INFOPLIST_KEY_CFBundleDisplayName = 1RM;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = NO;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -623,9 +627,9 @@
 				INFOPLIST_KEY_CFBundleDisplayName = 1RM;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = NO;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
