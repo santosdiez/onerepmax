@@ -54,9 +54,16 @@ class CoreDataExerciseStorage: NSObject, ExerciseStorage {
     
     static let shared = CoreDataExerciseStorage()
     
-    static let preview = CoreDataExerciseStorage(
-        persistenceController: PersistenceController.preview
-    )
+    static let preview: CoreDataExerciseStorage = {
+        let storage = CoreDataExerciseStorage(
+            persistenceController: PersistenceController.preview
+        )
+        
+        // Add fake data
+        try? storage.add(exercises: FakeData.exercises)
+        
+        return storage
+    }()
     
     private init(persistenceController: PersistenceController = PersistenceController.shared) {
         self.persistenceController = persistenceController

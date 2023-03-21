@@ -28,7 +28,7 @@ struct ExerciseDetailModelFake: ExerciseDetailModelProtocol {
                     oneRepMax: 100
                 ),
                 oneRepMaxData: dates.map {
-                    OneRepMaxItem(date: $0, value: 100)
+                    OneRepMaxItem(id: UUID(), date: $0, value: 100)
                 })
         ].publisher.eraseToAnyPublisher()
     }

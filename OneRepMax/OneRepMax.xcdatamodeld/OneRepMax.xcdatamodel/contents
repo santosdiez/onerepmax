@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="20G1120" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22D68" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="CDExercise" representedClassName="CDExercise" syncable="YES" codeGenerationType="class">
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" attributeType="String" defaultValueString=""/>
@@ -21,9 +21,4 @@
         <attribute name="oneRepMax" attributeType="Decimal" defaultValueString="0.0"/>
         <relationship name="exercise" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDExercise" inverseName="oneRepMaxs" inverseEntity="CDExercise"/>
     </entity>
-    <elements>
-        <element name="CDExercise" positionX="-63" positionY="18" width="128" height="104"/>
-        <element name="CDExerciseLog" positionX="-63" positionY="-18" width="128" height="119"/>
-        <element name="CDOneRepMax" positionX="-54" positionY="45" width="128" height="89"/>
-    </elements>
 </model>

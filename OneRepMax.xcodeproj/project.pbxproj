@@ -31,6 +31,7 @@
 		001F092B29C79F1F005A47EA /* ExerciseDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F092A29C79F1F005A47EA /* ExerciseDetailViewModelTests.swift */; };
 		001F092D29C79F2B005A47EA /* ExerciseDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F092C29C79F2B005A47EA /* ExerciseDetailTests.swift */; };
 		001F092F29C79F3E005A47EA /* ExerciseDetailModelFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F092E29C79F3E005A47EA /* ExerciseDetailModelFake.swift */; };
+		00AADDD629C942AA0077B873 /* FakeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AADDD529C942AA0077B873 /* FakeData.swift */; };
 		00CDE54929C35E52007AAC2B /* OneRepMaxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDE54829C35E52007AAC2B /* OneRepMaxApp.swift */; };
 		00CDE54B29C35E52007AAC2B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDE54A29C35E52007AAC2B /* ContentView.swift */; };
 		00CDE54D29C35E55007AAC2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00CDE54C29C35E55007AAC2B /* Assets.xcassets */; };
@@ -50,14 +51,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		001F08F529C3E992005A47EA /* Embed App Extensions */ = {
+		001F08F529C3E992005A47EA /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -88,6 +89,7 @@
 		001F092A29C79F1F005A47EA /* ExerciseDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailViewModelTests.swift; sourceTree = "<group>"; };
 		001F092C29C79F2B005A47EA /* ExerciseDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailTests.swift; sourceTree = "<group>"; };
 		001F092E29C79F3E005A47EA /* ExerciseDetailModelFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailModelFake.swift; sourceTree = "<group>"; };
+		00AADDD529C942AA0077B873 /* FakeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeData.swift; sourceTree = "<group>"; };
 		00CDE54529C35E52007AAC2B /* OneRepMax.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneRepMax.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00CDE54829C35E52007AAC2B /* OneRepMaxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneRepMaxApp.swift; sourceTree = "<group>"; };
 		00CDE54A29C35E52007AAC2B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				001F08FE29C61A07005A47EA /* CoreData */,
 				001F08FF29C61A46005A47EA /* ExerciseStorage.swift */,
 				001F091129C68E47005A47EA /* StorageManager.swift */,
+				00AADDD529C942AA0077B873 /* FakeData.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -285,7 +288,7 @@
 				00CDE54129C35E52007AAC2B /* Sources */,
 				00CDE54229C35E52007AAC2B /* Frameworks */,
 				00CDE54329C35E52007AAC2B /* Resources */,
-				001F08F529C3E992005A47EA /* Embed App Extensions */,
+				001F08F529C3E992005A47EA /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -325,7 +328,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1320;
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1420;
 				TargetAttributes = {
 					00CDE54429C35E52007AAC2B = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -396,6 +399,7 @@
 				001F090029C61A46005A47EA /* ExerciseStorage.swift in Sources */,
 				00CDE54929C35E52007AAC2B /* OneRepMaxApp.swift in Sources */,
 				001F091529C69840005A47EA /* ExerciseDetail.swift in Sources */,
+				00AADDD629C942AA0077B873 /* FakeData.swift in Sources */,
 				001F08FD29C61892005A47EA /* ExercisesListModel.swift in Sources */,
 				001F091029C67E57005A47EA /* OneRepMax.swift in Sources */,
 				001F091229C68E47005A47EA /* StorageManager.swift in Sources */,
@@ -573,11 +577,15 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OneRepMax/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = 1RM;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = NO;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -585,6 +593,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = es.santosdiez.OneRepMax;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -603,11 +614,15 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OneRepMax/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = 1RM;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = NO;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -615,6 +630,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = es.santosdiez.OneRepMax;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -629,13 +647,16 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = es.santosdiez.OneRepMaxTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OneRepMax.app/OneRepMax";
 			};
 			name = Debug;
@@ -648,13 +669,16 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = es.santosdiez.OneRepMaxTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OneRepMax.app/OneRepMax";
 			};
 			name = Release;

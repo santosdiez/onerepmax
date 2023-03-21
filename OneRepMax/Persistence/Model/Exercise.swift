@@ -33,7 +33,8 @@ struct Exercise {
         self.id = id
         self.name = name
         self.logs = logs
-        self.oneRepMaxs = oneRepMaxs
+        // Make sure items are sorted by date
+        self.oneRepMaxs = oneRepMaxs.sorted(by: { $0.date < $1.date })
         self.overallOneRepMax = overallOneRepMax
     }
 }

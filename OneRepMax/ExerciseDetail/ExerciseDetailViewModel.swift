@@ -14,7 +14,8 @@ protocol ExerciseDetailViewModelProtocol: ObservableObject {
     func fetchDetail()
 }
 
-struct OneRepMaxItem {
+struct OneRepMaxItem: Identifiable {
+    let id: UUID
     let date: Date
     let value: Decimal
 }

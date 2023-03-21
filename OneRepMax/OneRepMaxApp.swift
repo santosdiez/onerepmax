@@ -15,7 +15,6 @@ struct OneRepMaxApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView(exerciseStorage: StorageManager.exerciseStorage)
-                .preferredColorScheme(.dark)
         }
     }
 }

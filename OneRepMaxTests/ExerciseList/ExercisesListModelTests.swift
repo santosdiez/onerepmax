@@ -15,6 +15,11 @@ final class ExercisesListModelTests: XCTestCase {
     
     func testLoadExercises() {
         // Given
+        guard let fakeExercise = FakeData.exercises.first else {
+            XCTFail()
+            return
+        }
+        
         let model = ExercisesListModel(exercisesStorage: StorageManager.exerciseStoragePreview)
         
         let expectation = expectation(description: "Loading exercises")
@@ -26,8 +31,8 @@ final class ExercisesListModelTests: XCTestCase {
             let firstExercise = exercises.first // Sorted alphabetically
             
             // Then
-            XCTAssertEqual(firstExercise?.name, "Back Squat")
-            XCTAssertEqual(firstExercise?.oneRepMax, 100)
+            XCTAssertEqual(firstExercise?.name, fakeExercise.name)
+            XCTAssertEqual(firstExercise?.oneRepMax, fakeExercise.overallOneRepMax)
             expectation.fulfill()
         }
         

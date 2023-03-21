@@ -16,10 +16,3 @@ protocol ExerciseStorage {
     func add(exercises: [Exercise]) throws
     func deleteAll() throws
 }
-
-// Helper extension for testing/previews
-extension ExerciseStorage {
-    var firstExercise: Exercise? {
-        exercises.value.first
-    }
-}

@@ -37,3 +37,19 @@ struct ExerciseLog {
         self.weight = weight
     }
 }
+
+extension ExerciseLog: Equatable, Hashable {
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        lhs.date == rhs.date &&
+        lhs.sets == rhs.sets &&
+        lhs.reps == rhs.reps &&
+        lhs.weight == rhs.weight
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(date)
+        hasher.combine(sets)
+        hasher.combine(reps)
+        hasher.combine(weight)
+    }
+}

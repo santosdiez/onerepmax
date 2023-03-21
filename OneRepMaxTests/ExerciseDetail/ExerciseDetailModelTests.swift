@@ -14,7 +14,7 @@ final class ExerciseDetailModelTests: XCTestCase {
     private var cancellable: AnyCancellable?
     
     func testLoadDetail() {
-        guard let exerciseId = StorageManager.exerciseStoragePreview.firstExercise?.id else {
+        guard let exercise = FakeData.exercises.first else {
             XCTFail()
             return
         }
@@ -24,16 +24,16 @@ final class ExerciseDetailModelTests: XCTestCase {
         // Given
         let model = ExerciseDetailModel(
             exerciseStorage: StorageManager.exerciseStoragePreview,
-            exerciseId: exerciseId
+            exerciseId: exercise.id
         )
         
         cancellable = model.detail.sink { detailItem in
             guard let item = detailItem else { return }
             
             // Then
-            XCTAssertEqual(item.exerciseListItem.name, "Back Squat")
-            XCTAssertEqual(item.exerciseListItem.oneRepMax, 100)
-            XCTAssertEqual(item.oneRepMaxData.count, 10)
+            XCTAssertEqual(item.exerciseListItem.name, exercise.name)
+            XCTAssertEqual(item.exerciseListItem.oneRepMax, exercise.overallOneRepMax)
+            XCTAssertEqual(item.oneRepMaxData.count, exercise.oneRepMaxs.count)
             
             expectation.fulfill()
         }

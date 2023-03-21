@@ -43,7 +43,9 @@ extension ExerciseDetailItem {
         
         return ExerciseDetailItem(
             exerciseListItem: listItem,
-            oneRepMaxData: exercise.oneRepMaxs.map { OneRepMaxItem(date: $0.date, value: $0.oneRepMax) }
+            oneRepMaxData: exercise.oneRepMaxs.map {
+                OneRepMaxItem(id: $0.id, date: $0.date, value: $0.oneRepMax)
+            }
         )
     }
 }

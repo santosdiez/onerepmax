@@ -18,7 +18,8 @@ struct PlainTextExerciseImporter: ExerciseImporter {
     
     func importExercises(from url: URL) {
         let logLines = readFile(at: url)
-        var exerciseLogs: [String: [ExerciseLog]] = [:]
+        // By using a Set we avoid duplicates, saving some time in calculations
+        var exerciseLogs: [String: Set<ExerciseLog>] = [:]
 
         logLines.forEach { log in
             // Date, name, sets, reps, weight
@@ -31,7 +32,7 @@ struct PlainTextExerciseImporter: ExerciseImporter {
             let name = log[1]
 
             if !exerciseLogs.contains(where: { $0.0 == name }) {
-                exerciseLogs[name] = []
+                exerciseLogs[name] = Set()
             }
             
             guard let date = date(from: log[0]),
@@ -42,7 +43,7 @@ struct PlainTextExerciseImporter: ExerciseImporter {
                   }
 
             
-            exerciseLogs[name]?.append(ExerciseLog(
+            exerciseLogs[name]?.insert(ExerciseLog(
                 id: UUID(),
                 date: date,
                 sets: sets,
@@ -67,7 +68,7 @@ struct PlainTextExerciseImporter: ExerciseImporter {
             return Exercise(
                 id: UUID(),
                 name: name,
-                logs: logs,
+                logs: Array(logs),
                 oneRepMaxs: oneRepMaxs,
                 overallOneRepMax: oneRepMaxs.max(by: { $0.oneRepMax < $1.oneRepMax })?.oneRepMax
             )

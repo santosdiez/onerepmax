@@ -5,6 +5,7 @@
 //  Created by Borja Santos-Díez on 19/3/23.
 //
 
+import Charts
 import Foundation
 import SwiftUI
 
@@ -42,24 +43,76 @@ struct ExerciseDetail<ViewModel: ExerciseDetailViewModelProtocol>: View {
     }
 }
 
-extension OneRepMaxItem: Identifiable {
-    var id: UUID { UUID() }
-}
-
 struct OneRepMaxPlot: View {
     var dataPoints: [OneRepMaxItem]
+    @Environment(\.colorScheme) var colorScheme
+    private let dataPointWidth: CGFloat = 5
     
+    private var yAxisValuesRange: ClosedRange<Decimal> {
+        let values = dataPoints.map { $0.value }
+        
+        guard let min = values.min()?.nextDown,
+              let max = values.max()?.nextUp else {
+            return 0...500
+        }
+        
+        return min...max
+    }
+
     var body: some View {
-        List {
-            ForEach(dataPoints) { oneRepMax in
-                HStack {
-                    Text(oneRepMax.date.formatted())
-                    Spacer()
-                    Text(oneRepMax.value.formatted())
+        GeometryReader { proxy in
+            ScrollView(.horizontal) {
+                Chart {
+                    ForEach(dataPoints) { oneRepMax in
+                        LineMark(
+                            x: .value("Date", oneRepMax.date),
+                            y: .value("1RM", oneRepMax.value)
+                        )
+                        .symbol(.circle)
+                        // Couldn't find a shape style adapting both to light & dark mode
+                        .foregroundStyle(colorScheme == .dark ? .white : .black)
+                    }
                 }
+                .chartXAxis {
+                    AxisMarks(values: .stride(by: .day, count: 7)) { value in
+                        AxisValueLabel(collisionResolution: .greedy) {
+                            if let date = value.as(Date.self) {
+                                if Calendar.current.component(.day, from: date) <= 7 {
+                                    Text(date.formatted(.dateTime.day().month()))
+                                        .font(.system(size: 10))
+                                } else {
+                                    Text(date.formatted(.dateTime.day()))
+                                        .font(.system(size: 10))
+                                }
+                            }
+                        }
+                    }
+                }
+                .chartYAxis {
+                    AxisMarks(values: .init(
+                        arrayLiteral: yAxisValuesRange.lowerBound, yAxisValuesRange.upperBound
+                    )) {
+                        AxisValueLabel()
+                    }
+                }
+                .chartYScale(domain: yAxisValuesRange)
+                .padding()
+                .frame(width: chartWidth(for: proxy.size.width))
+                .fixedSize(horizontal: false, vertical: true)
             }
         }
-        .listStyle(.plain)
+    }
+    
+    func chartWidth(for viewWidth: CGFloat) -> CGFloat {
+        let dates = dataPoints.map { $0.date }
+        guard let minDate = dates.min(),
+              let maxDate = dates.max() else {
+            return viewWidth
+        }
+        let days = minDate.distance(to: maxDate) / 86400
+        
+        let chartWidth = CGFloat(days) * dataPointWidth
+        return chartWidth > viewWidth ? chartWidth : viewWidth
     }
 }
 
@@ -72,7 +125,7 @@ struct ExerciseDetail_Previews: PreviewProvider {
                 viewModel: ExerciseDetailViewModel(
                     model: ExerciseDetailModel(
                         exerciseStorage: StorageManager.exerciseStoragePreview,
-                        exerciseId: StorageManager.exerciseStoragePreview.firstExercise!.id
+                        exerciseId: FakeData.exercises.first!.id
                     )
                 )
             )
@@ -83,7 +136,7 @@ struct ExerciseDetail_Previews: PreviewProvider {
                 viewModel: ExerciseDetailViewModel(
                     model: ExerciseDetailModel(
                         exerciseStorage: StorageManager.exerciseStoragePreview,
-                        exerciseId: StorageManager.exerciseStoragePreview.firstExercise!.id
+                        exerciseId: FakeData.exercises.first!.id
                     )
                 )
             )
