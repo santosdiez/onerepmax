@@ -1,4 +1,4 @@
-# One Rep Max app
+# One-Rep Max app
 
 The goal of this app is to import historical workout data and calculate the theoretical one-rep max for each exercise.
 
@@ -42,28 +42,75 @@ Given that the app handles historical data imported initially from files, it mad
 
 However, and following the same philosophy as with the global architecture, we want for the code to be as generic and flexible as possible. Maybe at some point in the future we need to change the storage provider, and with this implementation including a cloud-based one would even be an option.
 
-The reasoning behind this implementation is that we want to expose a set of models independent from any underlying persistence system, and those are the ones contained in the **Models** folder, i.e. **Exercise**, **ExerciseLog** and **OneRepMax**.
+The reasoning behind this implementation is that we want to expose a set of models independent from any underlying persistence system, and those are the ones contained in the `Models` folder, i.e. `Exercise`, `ExerciseLog` and `OneRepMax`.
 
-For that same purpose of isolation, there is the **ExerciseStorage** protocol, which establishes the different operations a concrete implementation should provide, and always exposing those persistence-agnostic models.
+For that same purpose of isolation, there is the `ExerciseStorage` protocol, which establishes the different operations a concrete implementation should provide, and always exposing those persistence-agnostic models.
 
 In this case, only the Core Data implementation has been added, but this implementation provides - as shown in the image - potential to add different implementations for different providers, keeping the specific characteristics of each of them internal to those implementations.
 
 ![](images/exercise_storage.png)
 
-Instead of just implementing singletons, a **StorageManager** has been defined on top of those, with the goal of acting as the single access point to the different storages (in this case just one, the **ExerciseStorage**), so that the chosen implementation can be easily changed application-wide.
+Instead of just implementing singletons, a `StorageManager` has been defined on top of those, with the goal of acting as the single access point to the different storages (in this case just one, the `ExerciseStorage`), so that the chosen implementation can be easily changed application-wide.
 
-## Data importing
+## Importing workout data
 
-TBD
+Regarding how the data is imported, once again the approach of building something flexible and reusable is reflected here as well.
+
+The `ExerciseImporter` protocol defines a function that parses the workout historical data into a collection of `Exercise` from a file URL. Given the provided file in this case, the specific parsing is performed in the `PlainTextExerciseImporter` implementation. But again, the power of this approach is that we could handle different file types, different data formats...
+
+In this case, the app registers the `PlainTextExerciseImporter` for files with `.txt` extension (as seen in the `SceneDelegate`).
+
+For simplicity, and given that it wasn't stated otherwise in the requirements, when importing data from a new file, the previously existing content in the database is cleared.
+
+Besides that, also the calculation-heavy work is done upon importing the data. The different one-rep max values are calculated on the go, as the data is imported. That way, using the app afterwards will just be a matter of just displaying existing data.
+
+## User experience
+
+### Minimum iOS version
+
+In terms of user experience, and given that the usage of Swift Charts was recommended, the deployment target was set to iOS 16.0. The adoption of iOS 16.0 is quite high, but we would usually want to provide support to at least the previous version. When writing this README file, and according to [appleinsider.com](https://appleinsider.com/articles/23/02/16/ios-16-adoption-rate-higher-than-ios-15-but-ipados-16-lags-behind-ipados-15), 72% of all devices use iOS 16, while there's still a 20% using iOS 15.
+
+![](images/adoption.jpg)
+
+However, every now and then there is this need to find the right balance between a wider audience or the latest features.
+
+### Light/dark mode
+
+Even though a mock was provided in what it looked like a dark mode color scheme, it is usually a good practice to preserve the user's preferences in terms of theming.
+
+In this case, given that the UI is quite simple, both light and dark mode are properly supported.
+
+### Localization
+
+Another good practice is to provide as many languages as possible when building an app. In this case, and just as a sample of how translations would be added, the app supports both English and Spanish (except for the exercises names, which come directly from the imported data).
+
+### Other improvements
+
+When displaying the chart in the detail view, the amount of data points needs to be taken into account, so that the whole graph doesn't become a mess impossible to read.
+
+For that reason, and by doing some calculations taking into account the screen size, a horizontal scroll is added for a more pleasant user experience when analysing the data.
+
+![](images/chart_scroll.gif)
 
 ## Testing
 
-TBD
+Some basic testing (happy paths) is provided. As it was mentioned before, the business logic in this case isn't too complex
 
 ### Unit testing
 
-TBD
+Both models and view models are tested, taking advantage of the implementation in which we can inject some fakes (folder `Fakes`) when needed, so that the whole testing becomes simpler.
 
 ### Snapshot testing
 
-TBD
+On top of the unit testing, another interesting tool is the snapshot testing. By using it, we can also make sure that our different screens don't change when changing the code.
+
+In this case, it was done using the [`SnapshotTesting`](https://github.com/pointfreeco/swift-snapshot-testing) library, and using the different iPhone 13 Pro devices as reference (mini, regular and max), both light and dark mode snapshots were generated.
+
+**Disclaimer**: When performing the tests for the `ExerciseDetail` view, the test crashes in what it seems to be a limitation of the library when using Swift Charts. The issue, which kind of leaves these snapshot testing incomplete, is documented in the `ExerciseDetailTests` file.
+
+## Future work
+
+Some aspects that could be improved as part of future work are:
+
+* Different import strategies: offer an option to append or merge the imported data with the already existing one.
+* Interactive chart: by tapping each of the dots we could show some sort of overlay displaying the details about that data point (e.g. date and value). 
