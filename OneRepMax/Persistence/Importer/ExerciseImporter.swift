@@ -8,5 +8,20 @@
 import Foundation
 
 protocol ExerciseImporter {
+    var exerciseStorage: ExerciseStorage { get }
+    func parseExercises(from url: URL) -> [Exercise]
     func importExercises(from url: URL)
+}
+
+extension ExerciseImporter {
+    func importExercises(from url: URL) {
+        let exercises = parseExercises(from: url)
+        do {
+            // For simplicity, remove existing data before importing
+            try exerciseStorage.deleteAll()
+            try exerciseStorage.add(exercises: exercises)
+        } catch {
+            assertionFailure("Error importing data")
+        }
+    }
 }

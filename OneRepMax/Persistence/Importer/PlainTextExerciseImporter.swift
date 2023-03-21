@@ -16,7 +16,7 @@ struct PlainTextExerciseImporter: ExerciseImporter {
         return formatter
     }()
 
-    func importExercises(from url: URL) {
+    func parseExercises(from url: URL) -> [Exercise] {
         let logLines = readFile(at: url)
         // By using a Set we avoid duplicates, saving some time in calculations
         var exerciseLogs: [String: Set<ExerciseLog>] = [:]
@@ -51,7 +51,7 @@ struct PlainTextExerciseImporter: ExerciseImporter {
             ))
         }
 
-        let exercises: [Exercise] = exerciseLogs.map { name, logs in
+        return exerciseLogs.map { name, logs in
             // Group workout logs for a given exercise by date to calculate the 1RM per date
             let grouped = Dictionary(grouping: logs, by: { $0.date })
 
@@ -71,14 +71,6 @@ struct PlainTextExerciseImporter: ExerciseImporter {
                 oneRepMaxs: oneRepMaxs,
                 overallOneRepMax: oneRepMaxs.max(by: { $0.oneRepMax < $1.oneRepMax })?.oneRepMax
             )
-        }
-
-        do {
-            // For simplicity, remove existing data before importing
-            try exerciseStorage.deleteAll()
-            try exerciseStorage.add(exercises: exercises)
-        } catch {
-            // TBD
         }
     }
 }

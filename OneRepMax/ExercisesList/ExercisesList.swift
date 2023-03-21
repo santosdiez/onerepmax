@@ -15,6 +15,13 @@ struct ExercisesList<ViewModel: ExercisesListViewModelProtocol>: View {
         listView
             .listStyle(.plain)
             .navigationBarTitle("sExerciseListTitle", displayMode: .inline)
+            .navigationDestination(for: UUID.self) { id in
+                ExerciseDetail(
+                    viewModel: ExerciseDetailViewModel(
+                        model: ExerciseDetailModel(exerciseId: id)
+                    )
+                )
+            }
     }
 
     @ViewBuilder
@@ -37,11 +44,7 @@ struct ExercisesList<ViewModel: ExercisesListViewModelProtocol>: View {
     var exercisesListView: some View {
         ForEach(viewModel.exercises) { exercise in
             ZStack {
-                NavigationLink(destination: ExerciseDetail(
-                    viewModel: ExerciseDetailViewModel(
-                        model: ExerciseDetailModel(exerciseId: exercise.id)
-                    )
-                )) {
+                NavigationLink(value: exercise.id) {
                     EmptyView()
                 }.opacity(0.0)
                 ExerciseRow(exercise: exercise)

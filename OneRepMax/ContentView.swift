@@ -12,7 +12,7 @@ struct ContentView: View {
     let exerciseStorage: ExerciseStorage
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ExercisesList(
                 viewModel: ExercisesListViewModel(
                     model: ExercisesListModel(
@@ -21,6 +21,5 @@ struct ContentView: View {
                 )
             )
         }
-        .navigationViewStyle(.stack)
     }
 }
