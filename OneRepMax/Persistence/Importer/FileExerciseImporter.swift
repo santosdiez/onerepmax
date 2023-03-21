@@ -1,5 +1,5 @@
 //
-//  ExerciseImporter.swift
+//  FileExerciseImporter.swift
 //  OneRepMax
 //
 //  Created by Borja Santos-Díez on 18/3/23.
@@ -7,13 +7,15 @@
 
 import Foundation
 
-protocol ExerciseImporter {
+protocol FileExerciseImporter {
     var exerciseStorage: ExerciseStorage { get }
+
+    func handlesFile(with fileExtension: String) -> Bool
     func parseExercises(from url: URL) -> [Exercise]
     func importExercises(from url: URL)
 }
 
-extension ExerciseImporter {
+extension FileExerciseImporter {
     func importExercises(from url: URL) {
         let exercises = parseExercises(from: url)
         do {

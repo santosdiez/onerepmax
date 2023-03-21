@@ -32,8 +32,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 }
 
 class SceneDelegate: NSObject, UIWindowSceneDelegate {
-    private lazy var exerciseImporters: [String: ExerciseImporter] = [
-        "txt": PlainTextExerciseImporter(exerciseStorage: StorageManager.exerciseStorage)
+    private lazy var exerciseImporters: [FileExerciseImporter] = [
+        PlainTextExerciseImporter(exerciseStorage: StorageManager.exerciseStorage)
     ]
 
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
@@ -42,7 +42,9 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
             return
         }
 
-        if let importer = exerciseImporters[url.pathExtension.lowercased()] {
+        if let importer = exerciseImporters.first(where: {
+            $0.handlesFile(with: url.pathExtension.lowercased())
+        }) {
             importer.importExercises(from: url)
         }
     }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PlainTextExerciseImporter: ExerciseImporter {
+struct PlainTextExerciseImporter: FileExerciseImporter {
     let exerciseStorage: ExerciseStorage
 
     private let dateFormatter: DateFormatter = {
@@ -15,6 +15,10 @@ struct PlainTextExerciseImporter: ExerciseImporter {
         formatter.dateFormat = "MMM dd yyyy"
         return formatter
     }()
+
+    func handlesFile(with fileExtension: String) -> Bool {
+        fileExtension == "txt"
+    }
 
     func parseExercises(from url: URL) -> [Exercise] {
         let logLines = readFile(at: url)

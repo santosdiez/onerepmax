@@ -56,9 +56,9 @@ Instead of just implementing singletons, a `StorageManager` has been defined on 
 
 Regarding how the data is imported, once again the approach of building something flexible and reusable is reflected here as well.
 
-The `ExerciseImporter` protocol defines a function that parses the workout historical data into a collection of `Exercise` from a file URL. Given the provided file in this case, the specific parsing is performed in the `PlainTextExerciseImporter` implementation. But again, the power of this approach is that we could handle different file types, different data formats...
+The `FileExerciseImporter` protocol defines a function that parses the workout historical data into a collection of `Exercise` from a file URL. Given the provided file in this case, the specific parsing is performed in the `PlainTextExerciseImporter` implementation. But again, the power of this approach is that we could handle different file types, different data formats...
 
-In this case, the app registers the `PlainTextExerciseImporter` for files with `.txt` extension (as seen in the `SceneDelegate`).
+The `PlainTextExerciseImporter` exposes itself as handling files with `.txt` extension.
 
 For simplicity, and given that it wasn't stated otherwise in the requirements, when importing data from a new file, the previously existing content in the database is cleared.
 
