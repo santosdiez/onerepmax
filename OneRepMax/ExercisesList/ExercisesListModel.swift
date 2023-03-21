@@ -14,7 +14,7 @@ protocol ExercisesListModelProtocol {
 
 struct ExercisesListModel: ExercisesListModelProtocol {
     var exercises: AnyPublisher<[ExercisesListItem], Never>
-    
+
     init(exercisesStorage: ExerciseStorage) {
         exercises = exercisesStorage.exercises.map({
             $0.compactMap({ ExercisesListItem.fromExercise($0) })

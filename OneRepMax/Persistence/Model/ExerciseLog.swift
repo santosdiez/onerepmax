@@ -10,19 +10,19 @@ import Foundation
 struct ExerciseLog {
     /// Unique identifier for a given instance
     let id: UUID
-    
+
     /// Date when the exercise was performed
     let date: Date
-    
+
     /// Number of sets
     let sets: Int
-    
+
     /// Number of repetitions
     let reps: Int
-    
+
     /// Weight used when performing the exercise
     let weight: Decimal
-    
+
     init(
         id: UUID,
         date: Date,
@@ -45,7 +45,7 @@ extension ExerciseLog: Equatable, Hashable {
         lhs.reps == rhs.reps &&
         lhs.weight == rhs.weight
     }
-    
+
     func hash(into hasher: inout Hasher) {
         hasher.combine(date)
         hasher.combine(sets)

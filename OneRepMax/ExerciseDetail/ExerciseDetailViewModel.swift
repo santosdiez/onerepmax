@@ -10,7 +10,7 @@ import Foundation
 
 protocol ExerciseDetailViewModelProtocol: ObservableObject {
     var exerciseDetailItem: ExerciseDetailItem? { get }
-    
+
     func fetchDetail()
 }
 
@@ -29,14 +29,14 @@ class ExerciseDetailViewModel: ExerciseDetailViewModelProtocol {
     @Published var exerciseDetailItem: ExerciseDetailItem?
     private let model: ExerciseDetailModelProtocol
     private var cancellable: AnyCancellable?
-    
+
     init(model: ExerciseDetailModelProtocol) {
         self.model = model
         cancellable = model.detail.sink { detail in
             self.exerciseDetailItem = detail
         }
     }
-    
+
     func fetchDetail() {
         model.fetchExercise()
     }

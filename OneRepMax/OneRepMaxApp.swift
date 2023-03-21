@@ -11,7 +11,7 @@ import CoreData
 @main
 struct OneRepMaxApp: App {
     @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
-    
+
     var body: some Scene {
         WindowGroup {
             ContentView(exerciseStorage: StorageManager.exerciseStorage)
@@ -35,7 +35,7 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
     private lazy var exerciseImporter: ExerciseImporter = PlainTextExerciseImporter(
         exerciseStorage: StorageManager.exerciseStorage
     )
-    
+
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         // The app is registered to handle plain text files, so that we can easily import new workout data
         guard let url = URLContexts.first?.url else {

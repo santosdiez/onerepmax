@@ -10,7 +10,7 @@ import CoreData
 
 struct ContentView: View {
     let exerciseStorage: ExerciseStorage
-    
+
     var body: some View {
         NavigationView {
             ExercisesList(

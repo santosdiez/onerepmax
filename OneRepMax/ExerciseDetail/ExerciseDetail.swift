@@ -12,16 +12,16 @@ import SwiftUI
 struct ExerciseDetail<ViewModel: ExerciseDetailViewModelProtocol>: View {
     @StateObject var viewModel: ViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
+
     var backButton: some View {
         Button(action: {
             self.presentationMode.wrappedValue.dismiss()
-        }) {
+        }, label: {
             Image(systemName: "chevron.left")
                 .tint(.primary)
-        }
+        })
     }
-    
+
     var body: some View {
         VStack {
             if let detail = viewModel.exerciseDetailItem {
@@ -47,15 +47,15 @@ struct OneRepMaxPlot: View {
     var dataPoints: [OneRepMaxItem]
     @Environment(\.colorScheme) var colorScheme
     private let dataPointWidth: CGFloat = 5
-    
+
     private var yAxisValuesRange: ClosedRange<Decimal> {
         let values = dataPoints.map { $0.value }
-        
+
         guard let min = values.min()?.nextDown,
               let max = values.max()?.nextUp else {
             return 0...500
         }
-        
+
         return min...max
     }
 
@@ -102,7 +102,7 @@ struct OneRepMaxPlot: View {
             }
         }
     }
-    
+
     func chartWidth(for viewWidth: CGFloat) -> CGFloat {
         let dates = dataPoints.map { $0.date }
         guard let minDate = dates.min(),
@@ -110,7 +110,7 @@ struct OneRepMaxPlot: View {
             return viewWidth
         }
         let days = minDate.distance(to: maxDate) / 86400
-        
+
         let chartWidth = CGFloat(days) * dataPointWidth
         return chartWidth > viewWidth ? chartWidth : viewWidth
     }
@@ -131,7 +131,7 @@ struct ExerciseDetail_Previews: PreviewProvider {
             )
             .environment(\.locale, .init(identifier: "en"))
             .preferredColorScheme(.dark)
-            
+
             ExerciseDetail(
                 viewModel: ExerciseDetailViewModel(
                     model: ExerciseDetailModel(

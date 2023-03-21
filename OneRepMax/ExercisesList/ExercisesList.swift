@@ -10,13 +10,13 @@ import SwiftUI
 
 struct ExercisesList<ViewModel: ExercisesListViewModelProtocol>: View {
     @StateObject var viewModel: ViewModel
-    
+
     var body: some View {
         listView
             .listStyle(.plain)
             .navigationBarTitle("sExerciseListTitle", displayMode: .inline)
     }
-    
+
     @ViewBuilder
     var listView: some View {
         List {
@@ -27,7 +27,7 @@ struct ExercisesList<ViewModel: ExercisesListViewModelProtocol>: View {
             }
         }
     }
-    
+
     var emptyListView: some View {
         Text("sEmptyList")
             .font(.headline)
@@ -53,7 +53,7 @@ struct ExercisesList<ViewModel: ExercisesListViewModelProtocol>: View {
 
 struct ExerciseRow: View {
     let exercise: ExercisesListItem
-    
+
     var body: some View {
         HStack(alignment: .top) {
             VStack(alignment: .leading, spacing: 10) {
@@ -89,7 +89,7 @@ struct ExercisesList_Previews: PreviewProvider {
             )
             .environment(\.locale, .init(identifier: "en"))
             .preferredColorScheme(.dark)
-            
+
             ExercisesList(
                 viewModel: ExercisesListViewModel(
                     model: ExercisesListModel(exercisesStorage: StorageManager.exerciseStoragePreview)

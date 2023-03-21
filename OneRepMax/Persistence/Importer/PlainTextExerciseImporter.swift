@@ -9,13 +9,13 @@ import Foundation
 
 struct PlainTextExerciseImporter: ExerciseImporter {
     let exerciseStorage: ExerciseStorage
-    
+
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM dd yyyy"
         return formatter
     }()
-    
+
     func importExercises(from url: URL) {
         let logLines = readFile(at: url)
         // By using a Set we avoid duplicates, saving some time in calculations
@@ -34,7 +34,7 @@ struct PlainTextExerciseImporter: ExerciseImporter {
             if !exerciseLogs.contains(where: { $0.0 == name }) {
                 exerciseLogs[name] = Set()
             }
-            
+
             guard let date = date(from: log[0]),
                   let sets = Int(log[2]),
                   let reps = Int(log[3]),
@@ -42,7 +42,6 @@ struct PlainTextExerciseImporter: ExerciseImporter {
                       return
                   }
 
-            
             exerciseLogs[name]?.insert(ExerciseLog(
                 id: UUID(),
                 date: date,
@@ -51,11 +50,11 @@ struct PlainTextExerciseImporter: ExerciseImporter {
                 weight: weight
             ))
         }
-        
+
         let exercises: [Exercise] = exerciseLogs.map { name, logs in
             // Group workout logs for a given exercise by date to calculate the 1RM per date
             let grouped = Dictionary(grouping: logs, by: { $0.date })
-            
+
             // The value we'll keep will be the max of all the calculated 1RM for the date
             let oneRepMaxs: [OneRepMax] = grouped.compactMap { date, groupedLogs in
                 guard let oneRepMax = groupedLogs.map({
@@ -73,7 +72,7 @@ struct PlainTextExerciseImporter: ExerciseImporter {
                 overallOneRepMax: oneRepMaxs.max(by: { $0.oneRepMax < $1.oneRepMax })?.oneRepMax
             )
         }
-        
+
         do {
             // For simplicity, remove existing data before importing
             try exerciseStorage.deleteAll()

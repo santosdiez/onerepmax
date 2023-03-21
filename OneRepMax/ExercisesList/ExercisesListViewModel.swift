@@ -22,7 +22,7 @@ class ExercisesListViewModel: ExercisesListViewModelProtocol {
     @Published var exercises: [ExercisesListItem] = []
     private let model: ExercisesListModelProtocol
     private var cancellable: AnyCancellable?
-    
+
     init(model: ExercisesListModelProtocol) {
         self.model = model
         cancellable = model.exercises.sink { exercises in

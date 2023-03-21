@@ -10,7 +10,7 @@ import Foundation
 
 protocol ExerciseDetailModelProtocol {
     var detail: AnyPublisher<ExerciseDetailItem?, Never> { get }
-    
+
     func fetchExercise()
 }
 
@@ -18,7 +18,7 @@ class ExerciseDetailModel: ExerciseDetailModelProtocol {
     var detail: AnyPublisher<ExerciseDetailItem?, Never>
     private let exerciseStorage: ExerciseStorage
     private let exerciseId: UUID
-    
+
     init(exerciseStorage: ExerciseStorage = StorageManager.exerciseStorage, exerciseId: UUID) {
         self.exerciseStorage = exerciseStorage
         self.exerciseId = exerciseId
@@ -26,7 +26,7 @@ class ExerciseDetailModel: ExerciseDetailModelProtocol {
             ExerciseDetailItem.fromExercise($0)
         }).eraseToAnyPublisher()
     }
-    
+
     func fetchExercise() {
         do {
             try exerciseStorage.fetchExercise(by: exerciseId)
@@ -40,7 +40,7 @@ extension ExerciseDetailItem {
     static func fromExercise(_ exercise: Exercise?) -> ExerciseDetailItem? {
         guard let exercise = exercise,
               let listItem = ExercisesListItem.fromExercise(exercise) else { return nil }
-        
+
         return ExerciseDetailItem(
             exerciseListItem: listItem,
             oneRepMaxData: exercise.oneRepMaxs.map {

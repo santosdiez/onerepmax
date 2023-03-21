@@ -11,7 +11,7 @@ enum FakeData {
     static let exerciseNames = ["Back Squat", "Barbell Bench Press"]
     static let oneRepMaxDates: [Date] = {
         let referenceDate = Date(timeIntervalSince1970: 1679306950)
-        
+
         return (0..<10).reversed().map {
             referenceDate.addingTimeInterval(Double($0) * -86400 * 30)
         }
@@ -26,9 +26,9 @@ enum FakeData {
             )
         }
     }()
-    
+
     static let exercises: [Exercise] = {
-        exerciseNames.enumerated().map { index, name in
+        exerciseNames.map { name in
             Exercise(
                 id: UUID(),
                 name: name,
