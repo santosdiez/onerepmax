@@ -42,7 +42,7 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
             return
         }
 
-        if let importer = exerciseImporters[url.pathExtension] {
+        if let importer = exerciseImporters[url.pathExtension.lowercased()] {
             importer.importExercises(from: url)
         }
     }
